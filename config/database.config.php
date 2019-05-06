@@ -6,15 +6,15 @@
  * Time: 1:07 PM
  */
 
-$MySQL ["Host"] = "localhost";
+$MySQL ["Host"] = "xysuo.ddns.net";
 $MySQL ["Username"] = "root";
-$MySQL ["Password"] = "";
+$MySQL ["Password"] = "Xx%jcsa#eM%x5x@z";
 $MySQL ["Database"] = "CHR";
 
 // Initialize Database
-$MySQL ["DropDatabase"] = "DROP TABLE IF EXISTS `#Database`;";
-$MySQL ["CreateDatabase"] = "CREATE DATABASE #Database;";
-$MySQL ["CreateStaffTable"] = "CREATE TABLE `staff`( `FristName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `LastName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `StaffNumber` char(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `Position` tinyint(1) NULL DEFAULT NULL, `Gender` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `DateOfBrith` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `Department` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `OfficeNumber` int(11) NULL DEFAULT NULL, `BranchNumber` int(11) NULL DEFAULT NULL) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;";
+//$MySQL ["DropDatabase"] = "DROP TABLE IF EXISTS `#Database`;";
+//$MySQL ["CreateDatabase"] = "CREATE DATABASE #Database;";
+//$MySQL ["CreateStaffTable"] = "CREATE TABLE `staff`( `FristName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `LastName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `StaffNumber` char(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `Position` tinyint(1) NULL DEFAULT NULL, `Gender` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `DateOfBrith` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `Department` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, `OfficeNumber` int(11) NULL DEFAULT NULL, `BranchNumber` int(11) NULL DEFAULT NULL) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;";
 
 //Maybe need a guest table
 
