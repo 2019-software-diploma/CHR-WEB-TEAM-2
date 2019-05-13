@@ -144,6 +144,10 @@ require_once "config/main.config.php";
                                                required="required">
                                     </div>
                                     <div class="form-group">
+                                        <input type="checkbox" class="custom-control-input" id="newsLetter">
+                                        <label class="custom-control-label" for="newsLetter">Receive Email?</label>
+                                    </div>
+                                    <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">
                                             Register
                                         </button>

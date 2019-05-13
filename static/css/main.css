@@ -510,6 +510,9 @@ p {
     transform-style:preserve-3d;
 }
 
+.custom-control-label {
+    margin-left: 25px;
+}
 .flip-container {
     -webkit-perspective: 1000;
     -moz-perspective: 1000;
