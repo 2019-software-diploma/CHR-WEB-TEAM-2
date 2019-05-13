@@ -42,7 +42,7 @@ require_once "config/main.config.php";
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Get Involved</a>
                         <div class="dropdown-menu bg-dark">
-                            <a class="dropdown-item bg-dark text-light" href="#">Make Appointment</a>
+                            <a class="dropdown-item bg-dark text-light" href="/appointment.php">Make Appointment</a>
                             <a class="dropdown-item bg-dark text-light" href="#">Subscribe to News letter</a>
                         </div>
                     </li>

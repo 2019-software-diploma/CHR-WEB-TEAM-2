@@ -22,7 +22,7 @@
             <div class="col-xs-12 col-sm-3 col-md-3">
                 <h5>Get Involved</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>Make Appointment</a></li>
+                    <li><a href="/appointment.php"><i class="fa fa-angle-double-right"></i>Make Appointment</a></li>
                     <li><a href="#"><i class="fa fa-angle-double-right"></i>Subscribe to News letter</a></li>
                 </ul>
             </div>
