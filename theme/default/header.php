@@ -89,14 +89,15 @@ require_once "config/main.config.php";
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="/api.php" method="post">
+                                <form action="/api.php" method="post" onsubmit="l_beforeSubmit()">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="username" placeholder="Username"
-                                               required="required">
+                                        <input type="text" id="l_username" class="form-control" name="username"
+                                               placeholder="Username" required="required">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="password"
+                                        <input type="password" id="t_l_password" class="form-control"
                                                placeholder="Password" required="required">
+                                        <input type="hidden" id="l_password" name="password" value="">
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login
@@ -127,18 +128,19 @@ require_once "config/main.config.php";
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="/api.php" method="post">
+                                <form action="/api.php" method="post" onsubmit="r_beforeSubmit()">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="username" placeholder="Username"
-                                               required="required">
+                                        <input type="text" class="form-control" id="r_username" name="username"
+                                               placeholder="Username" required="required">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="password"
+                                        <input type="password" id="t_r_password" class="form-control"
                                                placeholder="Password" required="required">
+                                        <input type="hidden" id="r_password" name="passowrd" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="rpassword"
-                                               placeholder="Conform Password" required="required">
+                                        <input type="password" class="form-control" placeholder="Conform Password"
+                                               required="required">
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="email" placeholder="Email"

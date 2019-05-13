@@ -17,7 +17,6 @@ function windowsLoad() {
         });
     });
 }
-
 /* Login/Register Dialog */
 function cleanDialog() {
     $('.flip-container').removeClass('hover');
@@ -32,6 +31,21 @@ function flip_dialog(message, html) {
     });
 }
 
+/* Login/Register Password Encryption*/
+function encryption_password(userName, passWord) {
+    var hash = md5(sha256(userName + passWord)).toUpperCase();
+    return hash;
+}
+
+function l_beforeSubmit() {
+    var password = encryption_password($("#l_username").val(), $("#t_l_username").val());
+    $("#l_password").val(password);
+}
+
+function r_beforeSubmit() {
+    var password = encryption_password($("#r_username").val(), $("#t_r_username").val());
+    $("#r_password").val(password);
+}
 /* Appointment */
 function telephoneCheck(str) {
     var patt = new RegExp(/^\+?1?\s*?\(?\d{3}(?:\)|[-|\s])?\s*?\d{3}[-|\s]?\d{4}$/);
