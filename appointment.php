@@ -18,33 +18,36 @@ require_once "theme/default/header.php";
             <h2>Make an appointment</h2>
             <p>Please fill in your personal information and the reason for your appointment below:</p>
         </div>
-        <form action="#" method="post"><!-- TODO action page -->
+        <form action="api.php" method="post"><!-- TODO This is a test Page -->
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="first_name">First Name</label>
-                    <input type="text" class="form-control" id="first_name" placeholder="First Name"
+                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name"
                            onfocusout="formInputCheck(this);" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="last_name">Last Name</label>
-                    <input type="text" class="form-control" id="last_name" placeholder="Last Name"
+                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"
                            onfocusout="formInputCheck(this);" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phone_number">Phone Number</label>
-                    <input type="text" class="form-control" id="phone_number" placeholder="Phone Number"
+                    <input type="text" class="form-control" id="phone_number" name="phone_number"
+                           placeholder="Phone Number"
                            onkeypress="return event.charCode >= 48 && event.charCode <= 57 && value.length < 10;"
                            onfocusout="formInputCheck(this);" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="1234 Main St, ACT, 2614"
+                <input type="text" class="form-control" id="address" name="address"
+                       placeholder="1234 Main St, ACT, 2614"
                        onfocusout="formInputCheck(this);" required>
             </div>
             <div class="form-group">
                 <label for="reason">Brief of reason:</label>
-                <textarea class="form-control" rows="5" id="reason" onfocusout="formInputCheck(this);" required
+                <textarea class="form-control" rows="5" id="reason" name="reason" onfocusout="formInputCheck(this);"
+                          required
                           maxlength="500"></textarea>
                 <span class="float-right tag tag-default" id="count_message"></span>
             </div>
@@ -52,7 +55,7 @@ require_once "theme/default/header.php";
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="staff">Staff</label>
-                    <select id="staff" class="form-control" required>
+                    <select id="staff" name="staff" class="form-control" required>
                         <option selected>Test Person 1</option>
                         <option>Test Person 2</option>
                         <option>Test Person 3</option>
@@ -63,12 +66,12 @@ require_once "theme/default/header.php";
                 </div>
                 <div class="form-group col-md-4">
                     <label for="date">Date</label>
-                    <input id="date" class="form-control" type="date" placeholder="DD/MM/YYYY"
+                    <input id="date" name="date" class="form-control" type="date" placeholder="DD/MM/YYYY"
                            onfocusout="formInputCheck(this);" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="time">Time</label>
-                    <input id="time" class="form-control" type="time" placeholder="HH:MM AM"
+                    <input id="time" name="time" class="form-control" type="time" placeholder="HH:MM AM"
                            onfocusout="formInputCheck(this);" required>
                 </div>
             </div>
