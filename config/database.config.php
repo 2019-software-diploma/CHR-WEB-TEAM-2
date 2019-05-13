@@ -6,7 +6,7 @@
  * Time: 1:07 PM
  */
 
-$MySQL ["Host"] = "xysuo.ddns.net";
+$MySQL ["Host"] = "www.chrweb.tk";
 $MySQL ["Username"] = "root";
 $MySQL ["Password"] = "Xx%jcsa#eM%x5x@z";
 $MySQL ["Database"] = "CHR";
