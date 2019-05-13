@@ -1,9 +1,10 @@
 # CHR Web Project Team 2
 ## &copy;Copyright
-Canberra Institute of Technology<br>
-2019 SOFTWARE DEV. DIPLOMA <br>
-CHR WEB PROJECT Made By Team 2 <br>
-@TEAM 2<br>
+Canberra Institute of Technology  
+2019 SOFTWARE DEV. DIPLOMA  
+Chr Web Project for Assessment 3  
+Made By Team 2  
+@TEAM 2  
 
 ## Demo
 System will upload to host soon  
@@ -29,8 +30,8 @@ This access url will change soon.
 
 
 ## Team Members:
-1. Aaron Tull <br>
-2. Alvin Madziwo <br>
-3. Hien Nguyen <br>
-4. Roberto Zumba <br>
-5. Shuaiqiang Yin <br>
+1. Aaron Tull  
+2. Alvin Madziwo  
+3. Hien Nguyen  
+4. Roberto Zumba   
+5. Shuaiqiang Yin  
