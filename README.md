@@ -18,6 +18,15 @@ This access url will change soon.
 ## Wiki(Documentions)
 
 
+## Requirements 
+1. Apache/Nginx  
+2. PHP 5.6  
+3. MySQL  
+
+## Built With
+1. Bootstrap  
+2. PHPMailer  
+
 
 ## Team Members:
 1. Aaron Tull <br>
