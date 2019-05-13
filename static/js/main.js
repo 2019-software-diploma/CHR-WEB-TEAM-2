@@ -1,5 +1,5 @@
+/* Main Function for page load */
 windowsLoad();
-
 function windowsLoad() {
     var text_max = 500;
     $('#count_message').html(text_max + ' / ' + text_max);
@@ -11,11 +11,28 @@ function windowsLoad() {
     $('#reason').keypress(function () {
         return $('#reason').val().length < 500;
     });
-}
-function flip() {
-    var btn = document.querySelector("#Login").classList.toggle("flip");
+    $(function () {
+        $('.btn-register').click(function () {
+            flip_dialog();
+        });
+    });
 }
 
+/* Login/Register Dialog */
+function cleanDialog() {
+    $('.flip-container').removeClass('hover');
+}
+
+function flip_dialog(message, html) {
+    $('.flip-container .back').height($('.flip-container .front').height());
+    $(window).scrollTop(0)
+    $('.flip-container').addClass('hover');
+    $('.flip-container .btn-login').click(function () {
+        $('.flip-container').removeClass('hover');
+    });
+}
+
+/* Appointment */
 function telephoneCheck(str) {
     var patt = new RegExp(/^\+?1?\s*?\(?\d{3}(?:\)|[-|\s])?\s*?\d{3}[-|\s]?\d{4}$/);
     return patt.test(str);

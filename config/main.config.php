@@ -7,21 +7,21 @@ include_once "database.config.php";
  * Time: 1:03 PM
  */
 //Identity Declaration
-$Identity[1] = "Chief Operating Officer";
-$Identity[2] = "Chief Research Officer";
-$Identity[3] = "Marketing & Communications Manager";
-$Identity[4] = "Database Manager";
-$Identity[5] = "Finance and Administration Manager";
-$Identity[6] = "Member";
-$Identity[7] = "Guest";
+$Identity[0] = "Chief Operating Officer";
+$Identity[1] = "Chief Research Officer";
+$Identity[2] = "Marketing & Communications Manager";
+$Identity[3] = "Database Manager";
+$Identity[4] = "Finance and Administration Manager";
+$Identity[5] = "Member";
+$Identity[6] = "Guest";
 // Pages Type Declaration
-$PageType [1] = "Home";
-$PageType [2] = "Login";
-$PageType [3] = "Register";
-$PageType [4] = "Subscribe";
-$PageType [5] = "Appointment";
-$PageType [6] = "Post";
-$PageType [7] = "Forum";
-$PageType [8] = "Article";
-$PageType [9] = "Connect";
-$PageType [10] = "About";
+$PageType [0] = "Home";
+$PageType [1] = "Login";
+$PageType [2] = "Register";
+$PageType [3] = "Subscribe";
+$PageType [4] = "Make An Appointment";
+$PageType [5] = "Post";
+$PageType [6] = "Forum";
+$PageType [7] = "Article";
+$PageType [8] = "Connect";
+$PageType [9] = "About";
