@@ -554,6 +554,22 @@ p {
     font-weight: 300;
     font-size: 20px;
 }
+
+#count_message {
+    padding: 0.2em 0.6em 0.3em;
+    border-radius: 0.25em;
+    background: rgba(153, 153, 153, 0.8);
+    margin-top: -25px;
+    margin-right: 10px;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+}
+
+#reason {
+    resize: none;
+}
 /*Footer*/
 .bg-mine{
     background-color: #01579b;
