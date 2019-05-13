@@ -7,11 +7,11 @@ Made By Team 2
 @TEAM 2  
 
 ## Demo
-System will upload to host soon  
+System is running on this server now 
 [http://www.chrweb.tk](http://www.chrweb.tk)  
 Online Database Access:  
-[http://xysuo.ddns.net/phpmyadmin](http://xysuo.ddns.net/phpmyadmin)  
-This access url will change soon.   
+[http://admin.chrweb.tk/](http://admin.chrweb.tk/)  
+TODO: SSL (http to https)
 
 ## Features
 
