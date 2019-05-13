@@ -5,6 +5,7 @@
  * Date: 2019-03-11
  * Time: 16:04
  */
+
 require_once "config/main.config.php";
 ?>
 <!DOCTYPE html>
@@ -165,3 +166,4 @@ require_once "config/main.config.php";
         </div>
     </div>
 </div>
+<!-- TODO After Login should display User's Information -->
