@@ -21,7 +21,7 @@ require_once "config/main.config.php";
     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
         <div class="container">
             <div class="row">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img id="logo" src="http://caprivihealthcareresearch.org/assets/index.png" alt="Logo">
                 </a>
             </div>
