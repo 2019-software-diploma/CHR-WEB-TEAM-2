@@ -7,11 +7,11 @@ Made By Team 2
 @TEAM 2  
 
 ## Demo
-System will upload to host soon  
-[http://www.chrweb.tk](http://www.chrweb.tk)  
+System:  
+[https://www.chrweb.tk](https://www.chrweb.tk)  
 Online Database Access:  
-[http://xysuo.ddns.net/phpmyadmin](http://xysuo.ddns.net/phpmyadmin)  
-This access url will change soon.   
+[https://admin.chrweb.tk/](https://admin.chrweb.tk/)  
+All site SSL now!!!!!!!  
 
 ## Features
 
