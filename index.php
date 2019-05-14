@@ -71,7 +71,7 @@ require_once "theme/default/header.php";
                 </div>
             </div>
         </div>
-        <p class="text-center"><a href="#" class="appointment medium">Make a Appointment</a></p>
+        <p class="text-center"><a href="appointment.php" class="appointment medium">Make a Appointment</a></p>
     </div>
     <!-- TODO NEED last release -->
 </main>
