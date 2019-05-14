@@ -77,7 +77,7 @@ require_once "theme/default/header.php";
             </div>
             <div class="form-row">
                 <div class="form-group col-md-3">
-                    <input class="form-control" type="reset" value="Reset">
+                    <input class="form-control" type="reset" value="Reset" onclick="formReset()">
                 </div>
                 <div class="form-group col-md-3"></div>
                 <div class="form-group col-md-3"></div>

@@ -16,6 +16,7 @@ function windowsLoad() {
             flip_dialog();
         });
     });
+    autosize(document.getElementById("reason"));
 }
 /* Login/Register Dialog */
 function cleanDialog() {
@@ -51,7 +52,6 @@ function telephoneCheck(str) {
     var patt = new RegExp(/^\+?1?\s*?\(?\d{3}(?:\)|[-|\s])?\s*?\d{3}[-|\s]?\d{4}$/);
     return patt.test(str);
 }
-
 function formInputCheck(obj) {
     $("#" + obj.id).removeClass("is-valid");
     $("#" + obj.id).removeClass("is-invalid");
@@ -66,4 +66,21 @@ function formInputCheck(obj) {
         telephoneCheck(obj.value) ? $("#" + obj.id).addClass("is-valid") : $("#" + obj.id).addClass("is-invalid");
 
     }
+}
+
+function formReset() {
+    $("#first_name").removeClass("is-valid");
+    $("#first_name").removeClass("is-invalid");
+    $("#last_name").removeClass("is-valid");
+    $("#last_name").removeClass("is-invalid");
+    $("#phone_number").removeClass("is-valid");
+    $("#phone_number").removeClass("is-invalid");
+    $("#address").removeClass("is-valid");
+    $("#address").removeClass("is-invalid");
+    $("#reason").removeClass("is-valid");
+    $("#reason").removeClass("is-invalid");
+    $("#date").removeClass("is-valid");
+    $("#date").removeClass("is-invalid");
+    $("#time").removeClass("is-valid");
+    $("#time").removeClass("is-invalid");
 }
