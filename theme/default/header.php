@@ -23,7 +23,7 @@ require_once "config/main.config.php";
         <div class="container">
             <div class="row">
                 <a class="navbar-brand" href="/">
-                    <img id="logo" src="http://caprivihealthcareresearch.org/assets/index.png" alt="Logo">
+                    <img id="logo" src="/static/img/index.png" alt="Logo">
                 </a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
