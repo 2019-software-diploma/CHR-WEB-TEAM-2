@@ -27,6 +27,9 @@ All site SSL now!!!!!!!
 ## Built With
 1. Bootstrap  
 2. PHPMailer  
+3. JS-MD5  
+4. JS-SHA256  
+5. JS-AutoSize  
 
 
 ## Team Members:
