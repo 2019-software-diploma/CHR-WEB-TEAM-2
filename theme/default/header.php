@@ -143,7 +143,7 @@ require_once "config/main.config.php";
                                                placeholder="Conform Password" required="required">
                                     </div>
                                     <div class="form-group">
-                                        <input id="email" type="text" class="form-control" name="email"
+                                        <input id="email" type="email" class="form-control" name="email"
                                                placeholder="Email" required="required">
                                     </div>
                                     <div class="form-group">

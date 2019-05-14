@@ -23,7 +23,7 @@ function windowsLoad() {
         l_beforeSubmit();
     });
     $("#registerForm").submit(function (event) {
-        if ($("#r_password").val() === "")
+        if ($("#r_password").val() === "" || ($('#t_r_password').val() === $('#c_r_password').val()))
             event.preventDefault();
     });
     $("#appt_Reset").click(function (event) {
