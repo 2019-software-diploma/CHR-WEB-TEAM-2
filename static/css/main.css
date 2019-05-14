@@ -8,8 +8,11 @@ html * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-button:focus {
-    outline: none;
+
+*:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+    /* Delete default shadow, If some one fells default shadow is good, this style can remove! */
 }
 body {
     background: #fff;
@@ -425,6 +428,10 @@ p {
 .appointment.outline:hover,a.appointment.outline:hover {
     background: #74d1c6;
     color: #fff;
+}
+
+#reason {
+    overflow-y: hidden;
 }
 /*Login*/
 .modal-login {
