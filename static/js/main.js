@@ -83,4 +83,5 @@ function formReset() {
     $("#date").removeClass("is-invalid");
     $("#time").removeClass("is-valid");
     $("#time").removeClass("is-invalid");
+    $('#count_message').html("500 / 500");
 }
