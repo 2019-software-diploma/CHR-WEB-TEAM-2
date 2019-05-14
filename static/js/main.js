@@ -1,6 +1,40 @@
 /* Main Function for page load */
 windowsLoad();
 function windowsLoad() {
+    $("#loginForm").submit(function (event) {
+        l_beforeSubmit();
+    });
+    $("#registerForm").submit(function (event) {
+        r_beforeSubmit();
+    });
+    $("#appt_Reset").click(function (event) {
+        formReset();
+    });
+    $("#phone_number").keypress(function (event) {
+        if (event.charCode >= 48 && event.charCode <= 57 && this.value.length < 10)
+            event.preventDefault();
+    });
+    $("#first_name").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#last_name").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#phone_number").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#address").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#reason").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#date").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#time").focusout(function (event) {
+        formInputCheck(this);
+    });
     var text_max = 500;
     $('#count_message').html(text_max + ' / ' + text_max);
     $('#reason').keyup(function () {

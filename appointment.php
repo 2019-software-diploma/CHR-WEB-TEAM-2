@@ -23,32 +23,27 @@ require_once "theme/default/header.php";
                 <div class="form-group col-md-4">
                     <label for="first_name">First Name</label>
                     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name"
-                           onfocusout="formInputCheck(this);" required>
+                           required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="last_name">Last Name</label>
                     <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"
-                           onfocusout="formInputCheck(this);" required>
+                           required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phone_number">Phone Number</label>
                     <input type="text" class="form-control" id="phone_number" name="phone_number"
-                           placeholder="Phone Number"
-                           onkeypress="return event.charCode >= 48 && event.charCode <= 57 && value.length < 10;"
-                           onfocusout="formInputCheck(this);" required>
+                           placeholder="Phone Number" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
                 <input type="text" class="form-control" id="address" name="address"
-                       placeholder="1234 Main St, ACT, 2614"
-                       onfocusout="formInputCheck(this);" required>
+                       placeholder="1234 Main St, ACT, 2614" required>
             </div>
             <div class="form-group">
                 <label for="reason">Brief of reason:</label>
-                <textarea class="form-control" rows="5" id="reason" name="reason" onfocusout="formInputCheck(this);"
-                          required
-                          maxlength="500"></textarea>
+                <textarea class="form-control" rows="5" id="reason" name="reason" required maxlength="500"></textarea>
                 <span class="float-right tag tag-default" id="count_message"></span>
             </div>
             <p class="inForm-text">Who would you like to make an appointment with and what time?</p>
@@ -66,18 +61,16 @@ require_once "theme/default/header.php";
                 </div>
                 <div class="form-group col-md-4">
                     <label for="date">Date</label>
-                    <input id="date" name="date" class="form-control" type="date" placeholder="DD/MM/YYYY"
-                           onfocusout="formInputCheck(this);" required>
+                    <input id="date" name="date" class="form-control" type="date" placeholder="DD/MM/YYYY" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="time">Time</label>
-                    <input id="time" name="time" class="form-control" type="time" placeholder="HH:MM AM"
-                           onfocusout="formInputCheck(this);" required>
+                    <input id="time" name="time" class="form-control" type="time" placeholder="HH:MM AM" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-3">
-                    <input class="form-control" type="reset" value="Reset" onclick="formReset()">
+                    <input id="appt_Reset" class="form-control" type="reset" value="Reset">
                 </div>
                 <div class="form-group col-md-3"></div>
                 <div class="form-group col-md-3"></div>

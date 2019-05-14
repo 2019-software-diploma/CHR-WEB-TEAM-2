@@ -89,7 +89,7 @@ require_once "config/main.config.php";
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="/api.php" method="post" onsubmit="l_beforeSubmit()">
+                                <form id="loginForm" action="/api.php" method="post">
                                     <div class="form-group">
                                         <input type="text" id="l_username" class="form-control" name="username"
                                                placeholder="Username" required="required">
@@ -128,7 +128,7 @@ require_once "config/main.config.php";
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="/api.php" method="post" onsubmit="r_beforeSubmit()">
+                                <form id="registerForm" action="/api.php" method="post">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="r_username" name="username"
                                                placeholder="Username" required="required">
