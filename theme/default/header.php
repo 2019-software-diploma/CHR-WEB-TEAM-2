@@ -139,12 +139,12 @@ require_once "config/main.config.php";
                                         <input type="hidden" id="r_password" name="passowrd" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Conform Password"
-                                               required="required">
+                                        <input id="c_r_password" type="password" class="form-control"
+                                               placeholder="Conform Password" required="required">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="email" placeholder="Email"
-                                               required="required">
+                                        <input id="email" type="text" class="form-control" name="email"
+                                               placeholder="Email" required="required">
                                     </div>
                                     <div class="form-group">
                                         <input type="checkbox" class="custom-control-input" id="newsLetter">

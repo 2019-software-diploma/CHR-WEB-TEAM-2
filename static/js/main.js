@@ -1,11 +1,30 @@
 /* Main Function for page load */
 windowsLoad();
 function windowsLoad() {
+    $("#l_username").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#t_l_password").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#r_username").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#t_r_password").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#c_r_password").focusout(function (event) {
+        formInputCheck(this);
+    });
+    $("#email").focusout(function (event) {
+        formInputCheck(this);
+    });
     $("#loginForm").submit(function (event) {
         l_beforeSubmit();
     });
     $("#registerForm").submit(function (event) {
-        r_beforeSubmit();
+        if ($("#r_password").val() === "")
+            event.preventDefault();
     });
     $("#appt_Reset").click(function (event) {
         formReset();
@@ -66,7 +85,21 @@ function flip_dialog(message, html) {
     });
 }
 
-/* Login/Register Password Encryption*/
+/* Login/Register*/
+function checkPassword() {
+    $("#c_r_password").removeClass("is-valid");
+    $("#c_r_password").removeClass("is-invalid");
+    var password1 = $('#t_r_password').val(),
+        password2 = $('#c_r_password').val();
+    if (password1 === password2) {
+        $('#c_r_password').addClass("is-valid");
+        r_beforeSubmit();
+    } else {
+        $("#c_r_password").addClass("is-invalid");
+    }
+}
+
+/*  Password Encryption */
 function encryption_password(userName, passWord) {
     var hash = md5(sha256(userName + passWord)).toUpperCase();
     return hash;
@@ -95,10 +128,9 @@ function formInputCheck(obj) {
         $("#" + obj.id).addClass("is-invalid");
     }
     if (obj.id == "phone_number") {
-        $("#" + obj.id).removeClass("is-valid");
-        $("#" + obj.id).removeClass("is-invalid");
         telephoneCheck(obj.value) ? $("#" + obj.id).addClass("is-valid") : $("#" + obj.id).addClass("is-invalid");
-
+    } else if (obj.id == "c_r_password") {
+        checkPassword();
     }
 }
 
