@@ -15,7 +15,7 @@ require_once "config/main.config.php";
     <title> <?php echo $PageType[$page_type]; ?> - Caprivi Healthcare Research</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="./static/css/main.css">
+    <link rel="stylesheet" href="./static/css/main.min.css">
 </head>
 <body>
 <header>
@@ -23,7 +23,7 @@ require_once "config/main.config.php";
         <div class="container">
             <div class="row">
                 <a class="navbar-brand" href="/">
-                    <img id="logo" src="/static/img/index.png" alt="Logo">
+                    <img id="logo" src="./static/img/index.png" alt="Logo">
                 </a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +93,7 @@ require_once "config/main.config.php";
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="loginForm" action="api.php" method="post">
+                                <form id="loginForm" action="./api.php" method="post">
                                     <input type="hidden" name="action" value="Login">
                                     <div class="form-group">
                                         <input type="text" id="l_username" class="form-control" name="username"
@@ -133,8 +133,8 @@ require_once "config/main.config.php";
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="registerForm" action="api.php" method="post">
-                                    <input type="hidden" name="action" value="Register">
+                                <form id="registerForm" action="" method="post">
+                                    <!--<input type="hidden" name="action" value="Register">-->
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="first_name" name="first_name"
                                                placeholder="First Name" required="required">
@@ -162,7 +162,8 @@ require_once "config/main.config.php";
                                         <label class="custom-control-label" for="newsLetter">Receive Email?</label>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">
+                                        <button id="register" type="submit"
+                                                class="btn btn-primary btn-lg btn-block login-btn">
                                             Register
                                         </button>
                                     </div>

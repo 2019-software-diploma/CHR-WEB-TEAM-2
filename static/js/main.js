@@ -20,8 +20,7 @@ function windowsLoad() {
         l_beforeSubmit();
     });
     $("#registerForm").submit(function (event) {
-        if ($("#r_password").val() === "" || ($('#t_r_password').val() !== $('#c_r_password').val()))
-            event.preventDefault();
+        event.preventDefault();
     });
     $("#appt_Reset").click(function (event) {
         formReset();
@@ -29,7 +28,6 @@ function windowsLoad() {
     $("#phone_number").keypress(function (event) {
         if (!(event.charCode >= 48 && event.charCode <= 57 && this.value.length < 10))
             event.preventDefault();
-
     });
     $("#first_name").focusout(function (event) {
         formInputCheck(this);
@@ -51,6 +49,9 @@ function windowsLoad() {
     });
     $("#time").focusout(function (event) {
         formInputCheck(this);
+    });
+    $("#register").click(function () {
+        postRegister()
     });
     var text_max = 500;
     $('#count_message').html(text_max + ' / ' + text_max);
@@ -94,9 +95,47 @@ function checkPassword() {
         r_beforeSubmit();
     } else {
         $("#c_r_password").addClass("is-invalid");
+        $("#r_password").val("");
     }
 }
 
+function postRegister() {
+    $("#register").attr("disabled", "disabled");
+    if ($("#r_password").val() === "")
+        return;
+    var receive_email = 0; //Don't receive email
+    if ($("#newsLetter").is(':checked'))
+        receive_email = 1;
+    $.post('api.php',
+        {
+            action: 'Register',
+            first_name: $("#first_name").val(),
+            last_name: $("#last_name").val(),
+            password: $("#r_password").val(),
+            email: $("#email").val(),
+            newsletter: receive_email
+        },
+        function (result) {
+            if (result.Code !== 0) {
+                $(".modal-dialog .modal-login ").before("<div class=\"alert alert-danger alert-dismissable register-alert fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                    "<strong>Register not success!</strong> You should check all of your information, and try again later.\n" +
+                    "</div>")
+                $("#register").removeAttr("disabled");
+                setTimeout(function () {
+                    $(".register-alert").alert("close");
+                }, 2000)
+            } else {
+                $(".modal-dialog .modal-login ").before("<div class=\"alert alert-success alert-dismissable register-alert fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                    "<strong>Register success!</strong> You should redirect automatically after 2 seconds, if not please click this <a href=\"javascript:location.reload();\" class=\"alert-link\">link</a>.\n" +
+                    "</div>")
+                setTimeout(function () {
+                    window.location.reload();
+                }, 2000)
+            }
+        },
+        'json'
+    );
+}
 /*  Password Encryption */
 function encryption_password(passWord) {
     var hash = md5(sha256(passWord)).toUpperCase();

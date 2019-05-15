@@ -23,31 +23,33 @@ function Login($username, $password)
 
 function Register($firstName, $lastName, $passowrd, $email, $newsletter)
 {
+    require_once "sendEmail.php";
     global $MySQL;
     global $mysql_con;
+    $result = array("Code" => 0, "Message" => "Successful");
     $time = microtime();
     $ClientID = substr($time, strlen($time) - 5, 5);
-    if ($newsletter === 'on') {
-        $status = 1;
-    } else {
-        $status = 0;
-    }
     $SQL = $MySQL ["InsertMember"];
     $SQL = str_replace('#ClientID', $ClientID, $SQL);
     $SQL = str_replace('#Password', $passowrd, $SQL);
     $SQL = str_replace('#RegIP', get_client_ip(), $SQL);
     $res1 = mysqli_query($mysql_con, $SQL);
-    print_r($SQL . PHP_EOL);
-    print_r($res1 . PHP_EOL);
     $SQL = $MySQL ["InsertClient"];
     $SQL = str_replace('#ClientID', $ClientID, $SQL);
     $SQL = str_replace('#FirstName', $firstName, $SQL);
     $SQL = str_replace('#LastName', $lastName, $SQL);
-    $SQL = str_replace('#NewsLetter', $status, $SQL);
+    $SQL = str_replace('#NewsLetter', $newsletter, $SQL);
     $SQL = str_replace('#Email', $email, $SQL);
     $res2 = mysqli_query($mysql_con, $SQL);
-    print_r($SQL . PHP_EOL);
-    print_r($res2 . PHP_EOL);
+    if ($res1 !== $res2)
+        $result = array("Code" => 1, "Message" => "Failed");
+    echo json_encode($result);
+    $time = date("d/m/Y");
+    $textNews = "Receive newsletter";
+    if ($newsletter === 0) {
+        $textNews = "Don't receive newsletter";
+    }
+    sendWelcomeEmail($firstName . " " . $lastName, $ClientID, get_client_ip(), $time, $textNews, $email);
 }
 
 function get_client_ip()

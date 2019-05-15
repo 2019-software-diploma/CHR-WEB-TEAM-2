@@ -516,7 +516,6 @@ p {
     perspective: 1000;
     transform-style:preserve-3d;
 }
-
 .custom-control-label {
     margin-left: 25px;
 }
@@ -526,14 +525,12 @@ p {
     -o-perspective: 1000;
     perspective: 1000;
 }
-
 .flip-container.hover .flipper, .flip-container.hover .flipper {
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
-
 .flip-container, .front, .back {
     width: 100%;
 }
@@ -548,7 +545,6 @@ p {
     transform-style: preserve-3d;
     position: relative;
 }
-
 .front, .back {
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
@@ -559,16 +555,22 @@ p {
     left: 0;
     transform: rotateX(0deg); /*fixes a bug in firefox in backface visibility*/
 }
-
 .front {
     z-index: 2;
 }
-
 .back {
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
+}
+
+.register-alert {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+
 }
 /*Make an apportionment*/
 .maa_main {
