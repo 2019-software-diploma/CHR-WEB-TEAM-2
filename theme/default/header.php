@@ -15,7 +15,7 @@ require_once "config/main.config.php";
     <title> <?php echo $PageType[$page_type]; ?> - Caprivi Healthcare Research</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="./static/css/main.min.css">
+    <link rel="stylesheet" href="./static/css/main.css">
 </head>
 <body>
 <header>
@@ -31,7 +31,9 @@ require_once "config/main.config.php";
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item dropdown active">
+                    <li class="nav-item dropdown <?php if ($page_type === 0) {
+                        echo "active";
+                    } ?>">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cloud based Healthcare Research</a>
                         <div class="dropdown-menu bg-dark">
                             <a class="dropdown-item bg-dark text-light" href="#">Cloud Research</a>
@@ -40,7 +42,9 @@ require_once "config/main.config.php";
                             <a class="dropdown-item bg-dark text-light" href="#">Research Project</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown <?php if ($page_type === 4) {
+                        echo "active";
+                    } ?>">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Get Involved</a>
                         <div class="dropdown-menu bg-dark">
                             <a class="dropdown-item bg-dark text-light" href="/appointment.php">Make Appointment</a>
@@ -89,7 +93,8 @@ require_once "config/main.config.php";
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="loginForm" action="/api.php" method="post">
+                                <form id="loginForm" action="api.php" method="post">
+                                    <input type="hidden" name="action" value="Login">
                                     <div class="form-group">
                                         <input type="text" id="l_username" class="form-control" name="username"
                                                placeholder="Username" required="required">
@@ -128,15 +133,20 @@ require_once "config/main.config.php";
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="registerForm" action="/api.php" method="post">
+                                <form id="registerForm" action="api.php" method="post">
+                                    <input type="hidden" name="action" value="Register">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="r_username" name="username"
-                                               placeholder="Username" required="required">
+                                        <input type="text" class="form-control" id="first_name" name="first_name"
+                                               placeholder="First Name" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="last_name" name="last_name"
+                                               placeholder="Last Name" required="required">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" id="t_r_password" class="form-control"
                                                placeholder="Password" required="required">
-                                        <input type="hidden" id="r_password" name="passowrd" value="">
+                                        <input type="hidden" id="r_password" name="password" value="">
                                     </div>
                                     <div class="form-group">
                                         <input id="c_r_password" type="password" class="form-control"
@@ -147,7 +157,8 @@ require_once "config/main.config.php";
                                                placeholder="Email" required="required">
                                     </div>
                                     <div class="form-group">
-                                        <input type="checkbox" class="custom-control-input" id="newsLetter">
+                                        <input type="checkbox" class="custom-control-input" id="newsLetter"
+                                               name="newsletter">
                                         <label class="custom-control-label" for="newsLetter">Receive Email?</label>
                                     </div>
                                     <div class="form-group">

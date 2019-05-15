@@ -19,6 +19,7 @@ require_once "theme/default/header.php";
             <p>Please fill in your personal information and the reason for your appointment below:</p>
         </div>
         <form action="api.php" method="post"><!-- TODO This is a test Page -->
+            <input type="hidden" name="action" value="maa">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="first_name">First Name</label>

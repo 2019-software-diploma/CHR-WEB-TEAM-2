@@ -19,4 +19,5 @@ $MySQL ["Database"] = "CHR";
 //Maybe need a guest table
 
 //SQL scents
-$MySQL ["InsertMember"] = "";
+$MySQL ["InsertClient"] = "INSERT INTO `client` VALUES ('#ClientID', '#FirstName', '#LastName', '', '', #NewsLetter, '#Email');";
+$MySQL ["InsertMember"] = "INSERT INTO `account` VALUES ('#ClientID', '#Password', NOW(), '#RegIP', NOW(), '#RegIP');";

@@ -7,9 +7,6 @@ function windowsLoad() {
     $("#t_l_password").focusout(function (event) {
         formInputCheck(this);
     });
-    $("#r_username").focusout(function (event) {
-        formInputCheck(this);
-    });
     $("#t_r_password").focusout(function (event) {
         formInputCheck(this);
     });
@@ -30,8 +27,9 @@ function windowsLoad() {
         formReset();
     });
     $("#phone_number").keypress(function (event) {
-        if (event.charCode >= 48 && event.charCode <= 57 && this.value.length < 10)
+        if (!(event.charCode >= 48 && event.charCode <= 57 && this.value.length < 10))
             event.preventDefault();
+
     });
     $("#first_name").focusout(function (event) {
         formInputCheck(this);
@@ -100,18 +98,18 @@ function checkPassword() {
 }
 
 /*  Password Encryption */
-function encryption_password(userName, passWord) {
-    var hash = md5(sha256(userName + passWord)).toUpperCase();
+function encryption_password(passWord) {
+    var hash = md5(sha256(passWord)).toUpperCase();
     return hash;
 }
 
 function l_beforeSubmit() {
-    var password = encryption_password($("#l_username").val(), $("#t_l_username").val());
+    var password = encryption_password($("#t_l_password").val());
     $("#l_password").val(password);
 }
 
 function r_beforeSubmit() {
-    var password = encryption_password($("#r_username").val(), $("#t_r_username").val());
+    var password = encryption_password($("#c_r_password").val());
     $("#r_password").val(password);
 }
 /* Appointment */

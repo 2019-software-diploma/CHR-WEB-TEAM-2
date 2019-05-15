@@ -9,11 +9,11 @@ html * {
     -moz-osx-font-smoothing: grayscale;
 }
 
-*:focus {
+/**:focus {
     outline: none !important;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
-    /* Delete default shadow, If some one fells default shadow is good, this style can remove! */
-}
+    !* Delete default shadow, If some one fells default shadow is good, this style can remove! *!
+}*/
 body {
     background: #fff;
     font-size: 14px;
