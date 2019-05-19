@@ -21,3 +21,5 @@ $MySQL ["Database"] = "CHR";
 //SQL scents
 $MySQL ["InsertClient"] = "INSERT INTO `client` VALUES ('#ClientID', '#FirstName', '#LastName', '', '', #NewsLetter, '#Email');";
 $MySQL ["InsertMember"] = "INSERT INTO `account` VALUES ('#ClientID', '#Password', NOW(), '#RegIP', NOW(), '#RegIP');";
+
+$MySQL ["GetAccount"] = "SELECT Password FROM `account` WHERE Member_ID = '#ID';";

@@ -18,14 +18,27 @@ switch ($action) {
 }
 function Login($username, $password)
 {
-
+    global $MySQL, $mysql_con;
+    $SQL = $MySQL["GetAccount"];
+    $SQL = str_replace('#ID', $username, $SQL);
+    $result = array("Code" => 0, "Message" => "Successful");
+    $res = mysqli_query($mysql_con, $SQL);
+    if (mysqli_num_rows($res) > 0){
+        $row = mysqli_fetch_assoc($res);
+        if ($password == $row['Password'])
+        {
+            echo json_encode($result);
+            return;
+        }
+    }
+    $result = array("Code" => 1, "Message" => "Error");
+    echo json_encode($result);
 }
 
 function Register($firstName, $lastName, $passowrd, $email, $newsletter)
 {
     require_once "sendEmail.php";
-    global $MySQL;
-    global $mysql_con;
+    global $MySQL, $mysql_con;
     $result = array("Code" => 0, "Message" => "Successful");
     $time = microtime();
     $ClientID = substr($time, strlen($time) - 5, 5);
