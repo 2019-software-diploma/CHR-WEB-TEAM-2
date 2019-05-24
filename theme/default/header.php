@@ -7,6 +7,10 @@
 require_once "config/main.config.php";
 session_name('user');
 session_start();
+if ($page_type === 6 && !isset($_SESSION['Email'])){
+    header('Location: index.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +35,7 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item dropdown <?php if ($page_type === 0) {
-                        echo "active";
-                    } ?>">
+                    <li class="nav-item dropdown <?php if ($page_type === 0) { echo "active"; } ?>">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cloud based Healthcare Research</a>
                         <div class="dropdown-menu bg-dark">
                             <a class="dropdown-item bg-dark text-light" href="/">Cloud Research</a>
@@ -42,9 +44,7 @@ session_start();
                             <a class="dropdown-item bg-dark text-light" href="#">Research Project</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown <?php if ($page_type === 4) {
-                        echo "active";
-                    } ?>">
+                    <li class="nav-item dropdown <?php if ($page_type === 1 || $page_type === 6) { echo "active"; } ?>">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Get Involved</a>
                         <div class="dropdown-menu bg-dark">
                             <a class="dropdown-item bg-dark text-light" href="appointment.php">Make Appointment</a>
@@ -64,7 +64,7 @@ session_start();
                             <a class="dropdown-item bg-dark text-light" href="#">Our Team</a>
                         </div>
                     </li>
-                    <li class="nav-item <?php if ($page_type === 8) { echo "active"; } ?>">
+                    <li class="nav-item <?php if ($page_type === 4) { echo "active"; } ?>">
                         <a class="nav-link" href="contact.php">Contact Us</a>
                     </li>
                 </ul>
@@ -85,7 +85,7 @@ session_start();
                                 <i class="fas fa-user"></i> <?php echo $_SESSION["FirstName"]; ?> </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-info"
                                  aria-labelledby="navbarDropdownMenuLink-4">
-                                <a class="dropdown-item" href="profiel.php">My account</a>
+                                <a class="dropdown-item" href="profile.php">My account</a>
                                 <a class="dropdown-item" href="api.php?action=logout">Log out</a>
                             </div>
                         </li>
@@ -117,7 +117,7 @@ session_start();
                                 <form id="loginForm" action="" method="post">
                                     <div class="form-group">
                                         <input type="text" id="l_username" class="form-control" name="username"
-                                               placeholder="Username" required="required">
+                                               placeholder="User ID" required="required">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" id="t_l_password" class="form-control"
@@ -199,4 +199,3 @@ session_start();
         </div>
     </div>
 </div>
-<!-- TODO After Login should display User's Information -->

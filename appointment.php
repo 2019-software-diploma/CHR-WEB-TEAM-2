@@ -4,7 +4,7 @@
  * User: Shuaiqiang Yin
  */
 
-$page_type = 4;
+$page_type = 1;
 require_once "theme/default/header.php";
 /*Main Start*/
 ?>
@@ -20,23 +20,23 @@ require_once "theme/default/header.php";
                 <div class="form-group col-md-4">
                     <label for="first_name">First Name</label>
                     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name"
-                           required>
+                           value="<?php if (isset($_SESSION['Email'])) { echo $_SESSION['FirstName'];} ?>" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="last_name">Last Name</label>
                     <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"
-                           required>
+                           value="<?php if (isset($_SESSION['Email'])) { echo $_SESSION['LastName'];} ?>" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phone_number">Phone Number</label>
                     <input type="text" class="form-control" id="phone_number" name="phone_number"
-                           placeholder="Phone Number" required>
+                           placeholder="Phone Number" value="<?php if (isset($_SESSION['Email'])) { echo $_SESSION['Phone_Number'];} ?>" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
                 <input type="text" class="form-control" id="address" name="address"
-                       placeholder="1234 Main St, ACT, 2614" required>
+                       placeholder="1234 Main St, ACT, 2614" value="<?php if (isset($_SESSION['Email'])) { echo $_SESSION['Address'];} ?>" required>
             </div>
             <div class="form-group">
                 <label for="reason">Brief of reason:</label>

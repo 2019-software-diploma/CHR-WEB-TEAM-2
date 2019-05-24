@@ -4,22 +4,22 @@
  * User: Shuaiqiang Yin
  */
 
-$page_type = 8;
+$page_type = 4;
 require_once "theme/default/header.php";
 ?>
-<main class="container">
+<main class="container contact">
     <div class="row">
         <aside class="col">
             <form action="api.php" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name"
-                           placeholder="Full Name" required="required">
+                           placeholder="Full Name" value="<?php if (isset($_SESSION['Email'])) { echo $_SESSION['FirstName'] . " " . $_SESSION['LastName']; } ?>" required="required">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" class="form-control" id="email" name="email"
-                           placeholder="Email" required="required">
+                           placeholder="Email" value="<?php if (isset($_SESSION['Email'])) { echo $_SESSION['Email']; } ?>" required="required">
                 </div>
                 <div class="form-group">
                     <label for="subject">Subject</label>

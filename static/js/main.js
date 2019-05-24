@@ -22,6 +22,9 @@ function windowsLoad() {
     $("#registerForm").submit(function (event) {
         event.preventDefault();
     });
+    $("#profileForm").submit(function (event) {
+        event.preventDefault();
+    });
     $("#appt_Reset").click(function (event) {
         formReset();
     });
@@ -56,10 +59,18 @@ function windowsLoad() {
     $("#register").click(function () {
         postRegister();
     });
+    $("#update").click(function () {
+        postProfile();
+    });
     var text_max = 500;
     $('#count_message').html(text_max + ' / ' + text_max);
     $('#reason').keyup(function () {
         var text_length = $('#reason').val().length;
+        var text_remaining = text_max - text_length;
+        $('#count_message').html(text_remaining + ' / ' + text_max);
+    });
+    $('#message').keyup(function () {
+        var text_length = $('#message').val().length;
         var text_remaining = text_max - text_length;
         $('#count_message').html(text_remaining + ' / ' + text_max);
     });
@@ -72,6 +83,7 @@ function windowsLoad() {
         });
     });
     autosize(document.getElementById("reason"));
+    autosize(document.getElementById("message"));
 }
 /* Login/Register Dialog */
 function cleanDialog() {
@@ -119,7 +131,7 @@ function postLogin() {
                     "</div>");
                 $("#register").removeAttr("disabled");
                 setTimeout(function () {
-                    $(".register-alert").alert("close");
+                    $(".alert").alert("close");
                 }, 2000);
             } else {
                 $(".front .modal-dialog").before("<div class=\"alert alert-success alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
@@ -157,7 +169,7 @@ function postRegister() {
                     "</div>");
                 $("#register").removeAttr("disabled");
                 setTimeout(function () {
-                    $(".register-alert").alert("close");
+                    $(".alert").alert("close");
                 }, 2000)
             } else {
                 $(".back .modal-dialog").before("<div class=\"alert alert-success alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
@@ -224,4 +236,43 @@ function formReset() {
     $("#time").removeClass("is-valid");
     $("#time").removeClass("is-invalid");
     $('#count_message').html("500 / 500");
+}
+
+/* Profile */
+function postProfile() {
+    $("#update").attr("disabled", "disabled");
+    if ($("#email2").val() === "")
+        return;
+    var receive_email = 0; //Don't receive email
+    if ($("#subscription").is(':checked'))
+        receive_email = 1;
+    $.post('api.php',
+        {
+            action: 'update',
+            ID: $("#id").val(),
+            address: $("#address").val(),
+            phone: $("#phone_number").val(),
+            email: $("#email2").val(),
+            sub: receive_email
+        },
+        function (result) {
+            if (result.Code !== 0) {
+                $("#profileForm").before("<div class=\"alert alert-danger alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                    "<strong>Update not success!</strong> You should check your user or password, and try again later.\n" +
+                    "</div>");
+                $("#register").removeAttr("disabled");
+                setTimeout(function () {
+                    $(".alert").alert("close");
+                }, 2000);
+            } else {
+                $("#profileForm").before("<div class=\"alert alert-success alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                    "<strong>Update success!</strong> You should redirect automatically after 2 seconds, if not please click this <a href=\"javascript:location.reload();\" class=\"alert-link\">link</a>.\n" +
+                    "</div>");
+                setTimeout(function () {
+                    window.location.reload();
+                }, 2000)
+            }
+        },
+        'json'
+    );
 }

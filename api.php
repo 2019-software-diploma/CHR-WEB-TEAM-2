@@ -23,6 +23,9 @@ switch ($action) {
     case 'logout':
         Logout();
         break;
+    case 'update':
+        UpdateProfile($_POST['ID'], $_POST['address'], $_POST['phone'], $_POST['sub'], $_POST['email']);
+        break;
     default:
         print_r($action);
 }
@@ -43,6 +46,7 @@ function Login($username, $password)
             $row = mysqli_fetch_row($res);
             session_name('user');
             session_start();
+            $_SESSION['UserID'] = $username;
             $_SESSION['FirstName'] = $row [0];
             $_SESSION['LastName'] = $row [1];
             $_SESSION['Address'] = $row [2];
@@ -57,7 +61,7 @@ function Login($username, $password)
     echo json_encode($result);
 }
 
-function Register($firstName, $lastName, $passowrd, $email, $newsletter)
+function Register($firstName, $lastName, $password, $email, $newsletter)
 {
     require_once "sendEmail.php";
     global $MySQL, $mysql_con;
@@ -66,7 +70,7 @@ function Register($firstName, $lastName, $passowrd, $email, $newsletter)
     $ClientID = substr($time, strlen($time) - 5, 5);
     $SQL = $MySQL ["InsertMember"];
     $SQL = str_replace('#ClientID', $ClientID, $SQL);
-    $SQL = str_replace('#Password', $passowrd, $SQL);
+    $SQL = str_replace('#Password', $password, $SQL);
     $SQL = str_replace('#RegIP', get_client_ip(), $SQL);
     $res1 = mysqli_query($mysql_con, $SQL);
     $SQL = $MySQL ["InsertClient"];
@@ -81,6 +85,7 @@ function Register($firstName, $lastName, $passowrd, $email, $newsletter)
     echo json_encode($result);
     session_name('user');
     session_start();
+    $_SESSION['UserID'] = $ClientID;
     $_SESSION['FirstName'] = $firstName;
     $_SESSION['LastName'] = $lastName;
     $_SESSION['Address'] = "";
@@ -92,20 +97,48 @@ function Register($firstName, $lastName, $passowrd, $email, $newsletter)
     if ($newsletter === 0) {
         $textNews = "Don't receive newsletter";
     }
-    sendWelcomeEmail($firstName . " " . $lastName, $ClientID, get_client_ip(), $time, $textNews, $email);
+    $ip = get_client_ip();
+    exec("php /var/www/chrweb_home/sendEmail.php \"$firstName . \" \" . $lastName\" \"$ClientID\" \"$ip\" \"$time\" \"$textNews\" \"$email\"  > /dev/null 2> /dev/null &");
+    echo "php /var/www/chrweb_home/sendEmail.php \"$firstName $lastName\" \"$ClientID\" \"$ip\" \"$time\" \"$textNews\" \"$email\"  > /dev/null 2> /dev/null &";
+    //sendWelcomeEmail($firstName . " " . $lastName, $ClientID, get_client_ip(), $time, $textNews, $email);
 }
 
 function Logout(){
     session_name('user');
     session_start();
     session_destroy();
+    unset($_SESSION['UserID']);
     unset($_SESSION['FirstName']);
     unset($_SESSION['LastName']);
     unset($_SESSION['Address']);
     unset($_SESSION['Phone_Number']);
     unset($_SESSION['Subscription']);
     unset($_SESSION['Email']);
-    echo "<h1>Redirect to home page!</h1> <script type='application/javascript'>window.location = window.location.hostname</script>";
+    echo "<h1>Redirect to home page!</h1> <script type='application/javascript'>window.location = \"https://www.chrweb.tk\"</script>";
+}
+
+function UpdateProfile($ID, $address, $phone, $sub, $email){
+    global $MySQL, $mysql_con;
+    $SQL = $MySQL["UpdateProfile"];
+    $SQL = str_replace('#ID', $ID, $SQL);
+    $SQL = str_replace('#Address', $address, $SQL);
+    $SQL = str_replace('#Phone', $phone, $SQL);
+    $SQL = str_replace('#Sub', $sub, $SQL);
+    $SQL = str_replace('#Email', $email, $SQL);
+    $result = array("Code" => 0, "Message" => "Successful");
+    $res = mysqli_query($mysql_con, $SQL);
+    if ($res) {
+        session_name('user');
+        session_start();
+        $_SESSION['Address'] = $address;
+        $_SESSION['Phone_Number'] = $phone;
+        $_SESSION['Subscription'] = $sub;
+        $_SESSION['Email'] = $email;
+        echo json_encode($result);
+        return;
+    }
+    $result = array("Code" => 1, "Message" => "Error");
+    echo json_encode($result);
 }
 
 function get_client_ip()

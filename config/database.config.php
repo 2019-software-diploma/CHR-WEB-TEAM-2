@@ -6,8 +6,8 @@
 
 $MySQL ["Host"] = "localhost";
 $MySQL ["Username"] = "root";
-//$MySQL ["Password"] = "Xx%jcsa#eM%x5x@z";
-$MySQL ["Password"] = "";
+$MySQL ["Password"] = "Xx%jcsa#eM%x5x@z";
+//$MySQL ["Password"] = "";
 $MySQL ["Database"] = "CHR";
 
 // Initialize Database
@@ -23,3 +23,5 @@ $MySQL ["InsertMember"] = "INSERT INTO `account` VALUES ('#ClientID', '#Password
 
 $MySQL ["GetAccount"] = "SELECT Password FROM `account` WHERE Member_ID = '#ID';";
 $MySQL ["GetClient"] = "SELECT First_Name, Last_Name, Address, Phone_Number, Subscription_Status, Email FROM `client` WHERE Client_ID = '#ID';";
+
+$MySQL ["UpdateProfile"] = "UPDATE `client` SET Address = '#Address', Phone_Number = '#Phone', Subscription_Status = #Sub, Email = '#Email' WHERE Client_ID = '#ID';";

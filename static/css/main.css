@@ -605,7 +605,9 @@ p {
     resize: none;
 }
 /* Contact Us */
-
+.contact{
+    margin-top: 30px;
+}
 /* Footer */
 .bg-mine{
     background-color: #01579b;

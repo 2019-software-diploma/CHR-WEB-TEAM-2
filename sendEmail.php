@@ -7,12 +7,12 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require_once './lib/phpmailer/Exception.php';
-require_once './lib/phpmailer/PHPMailer.php';
-require_once './lib/phpmailer/SMTP.php';
-require_once './config/database.Connection.php';
+require_once __DIR__ . '/lib/phpmailer/Exception.php';
+require_once __DIR__ . '/lib/phpmailer/PHPMailer.php';
+require_once __DIR__ . '/lib/phpmailer/SMTP.php';
+require_once __DIR__ . '/config/database.Connection.php';
 
-sendWelcomeEmail("Peter Peter", "04123", "", "04/12/2019", "Receive Newsletter", "mikylee.saleen@0hcow.com");
+sendWelcomeEmail($argv[1], $argv[2], $argv[3], $argv[4], $argv[5], $argv[6]);
 
 function sendWelcomeEmail($name, $cliendID, $regIP, $regDate, $newsLatter, $email)
 {
@@ -34,8 +34,8 @@ function sendWelcomeEmail($name, $cliendID, $regIP, $regDate, $newsLatter, $emai
         $mail->Port = 587;
         $mail->setFrom($row[0], $row[2]);
         $mail->addAddress($email);
-        $fileHandle = fopen("./lib/welcome.html", "r") or die("Unable to open file!");
-        $welcome = fread($fileHandle, filesize("./lib/welcome.html"));
+        $fileHandle = fopen(__DIR__ . "/lib/welcome.html", "r") or die("Unable to open file!");
+        $welcome = fread($fileHandle, filesize(__DIR__ . "/lib/welcome.html"));
         $welcome = str_replace('#NAME', $name, $welcome);
         $welcome = str_replace('#ClientID', $cliendID, $welcome);
         $welcome = str_replace('#RegIP', $regIP, $welcome);
@@ -46,8 +46,8 @@ function sendWelcomeEmail($name, $cliendID, $regIP, $regDate, $newsLatter, $emai
         $mail->Subject = 'Welcome!';
         $mail->Body = $welcome;
         $mail->send();
-        //echo 'Send';
+        echo 'Send';
     } catch (Exception $e) {
-        //echo 'Error: ', $mail->ErrorInfo;
+        echo 'Error: ', $mail->ErrorInfo;
     }
 }

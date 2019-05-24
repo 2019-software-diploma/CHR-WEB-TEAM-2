@@ -14,13 +14,15 @@ $Identity[4] = "Finance and Administration Manager";
 $Identity[5] = "Member";
 $Identity[6] = "Guest";
 // Pages Type Declaration
+
 $PageType [0] = "Home";
-$PageType [1] = "Login";
+/*$PageType [1] = "Login";
 $PageType [2] = "Register";
-$PageType [3] = "Subscribe";
-$PageType [4] = "Make An Appointment";
-$PageType [5] = "Post";
-$PageType [6] = "Forum";
-$PageType [7] = "Article";
-$PageType [8] = "Connect Us";
-$PageType [9] = "About";
+$PageType [3] = "Subscribe";*/
+$PageType [1] = "Make An Appointment";
+/*$PageType [5] = "Post";*/
+$PageType [2] = "Forum";
+$PageType [3] = "Article";
+$PageType [4] = "Connect Us";
+$PageType [5] = "About";
+$PageType [6] = "Profile";
