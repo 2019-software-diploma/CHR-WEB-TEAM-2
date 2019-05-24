@@ -7,6 +7,8 @@
 require_once 'config/database.Connection.php';
 if (isset($_POST['action']))
     $action = $_POST['action'];
+if (isset($_GET['action']))
+    $action = $_GET['action'];
 switch ($action) {
     case 'Login':
         if (isset($_POST['username']) && isset($_POST['password']))
@@ -17,6 +19,9 @@ switch ($action) {
             Register($_POST['first_name'], $_POST['last_name'], $_POST['password'], $_POST['email'], $_POST['newsletter']);
         break;
     case 'maa':
+        break;
+    case 'logout':
+        Logout();
         break;
     default:
         print_r($action);
@@ -32,6 +37,18 @@ function Login($username, $password)
         $row = mysqli_fetch_assoc($res);
         if ($password == $row['Password'])
         {
+            $SQL = $MySQL["GetClient"];
+            $SQL = str_replace('#ID', $username, $SQL);
+            $res = mysqli_query($mysql_con, $SQL);
+            $row = mysqli_fetch_row($res);
+            session_name('user');
+            session_start();
+            $_SESSION['FirstName'] = $row [0];
+            $_SESSION['LastName'] = $row [1];
+            $_SESSION['Address'] = $row [2];
+            $_SESSION['Phone_Number'] = $row [3];
+            $_SESSION['Subscription'] = $row [4];
+            $_SESSION['Email'] = $row [5];
             echo json_encode($result);
             return;
         }
@@ -62,12 +79,33 @@ function Register($firstName, $lastName, $passowrd, $email, $newsletter)
     if ($res1 !== $res2)
         $result = array("Code" => 1, "Message" => "Failed");
     echo json_encode($result);
+    session_name('user');
+    session_start();
+    $_SESSION['FirstName'] = $firstName;
+    $_SESSION['LastName'] = $lastName;
+    $_SESSION['Address'] = "";
+    $_SESSION['Phone_Number'] = "";
+    $_SESSION['Subscription'] = $newsletter;
+    $_SESSION['Email'] = $email;
     $time = date("d/m/Y");
     $textNews = "Receive newsletter";
     if ($newsletter === 0) {
         $textNews = "Don't receive newsletter";
     }
     sendWelcomeEmail($firstName . " " . $lastName, $ClientID, get_client_ip(), $time, $textNews, $email);
+}
+
+function Logout(){
+    session_name('user');
+    session_start();
+    session_destroy();
+    unset($_SESSION['FirstName']);
+    unset($_SESSION['LastName']);
+    unset($_SESSION['Address']);
+    unset($_SESSION['Phone_Number']);
+    unset($_SESSION['Subscription']);
+    unset($_SESSION['Email']);
+    echo "<h1>Redirect to home page!</h1> <script type='application/javascript'>window.location = window.location.hostname</script>";
 }
 
 function get_client_ip()

@@ -5,6 +5,8 @@
  */
 
 require_once "config/main.config.php";
+session_name('user');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +15,7 @@ require_once "config/main.config.php";
     <title> <?php echo $PageType[$page_type]; ?> - Caprivi Healthcare Research</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="./static/css/main.min.css">
+    <link rel="stylesheet" href="./static/css/main.css">
 </head>
 <body>
 <header>
@@ -66,10 +68,31 @@ require_once "config/main.config.php";
                         <a class="nav-link" href="contact.php">Contact Us</a>
                     </li>
                 </ul>
-                <button type="button" class="nav-login btn btn-outline-dark" href="#Login" data-toggle="modal"
-                        onclick="cleanDialog()">
-                    Sign In / Up
-                </button>
+                <?php
+                if (!isset($_SESSION["Email"])) {
+                    ?>
+                    <button type="button" class="nav-login btn btn-outline-dark" href="#Login" data-toggle="modal"
+                            onclick="cleanDialog()">
+                        Sign In / Up
+                    </button>
+                <?php
+                } else {
+                    ?>
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i> <?php echo $_SESSION["FirstName"]; ?> </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                                 aria-labelledby="navbarDropdownMenuLink-4">
+                                <a class="dropdown-item" href="profiel.php">My account</a>
+                                <a class="dropdown-item" href="api.php?action=logout">Log out</a>
+                            </div>
+                        </li>
+                    </ul>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </nav>
@@ -91,8 +114,7 @@ require_once "config/main.config.php";
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="loginForm" action="./api.php" method="post">
-                                    <input type="hidden" name="action" value="Login">
+                                <form id="loginForm" action="" method="post">
                                     <div class="form-group">
                                         <input type="text" id="l_username" class="form-control" name="username"
                                                placeholder="Username" required="required">
@@ -103,7 +125,7 @@ require_once "config/main.config.php";
                                         <input type="hidden" id="l_password" name="password" value="">
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login
+                                        <button id="login_btn" type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login
                                         </button>
                                     </div>
                                 </form>
@@ -120,7 +142,7 @@ require_once "config/main.config.php";
                     </div>
                 </div>
                 <div class="back">
-                    <div class="modal-dialog modal-login ">
+                    <div class="modal-dialog modal-login">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <div class="avatar">
@@ -132,7 +154,6 @@ require_once "config/main.config.php";
                             </div>
                             <div class="modal-body">
                                 <form id="registerForm" action="" method="post">
-                                    <!--<input type="hidden" name="action" value="Register">-->
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="first_name" name="first_name"
                                                placeholder="First Name" required="required">

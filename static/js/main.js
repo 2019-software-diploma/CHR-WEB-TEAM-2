@@ -17,7 +17,7 @@ function windowsLoad() {
         formInputCheck(this);
     });
     $("#loginForm").submit(function (event) {
-        l_beforeSubmit();
+        event.preventDefault();
     });
     $("#registerForm").submit(function (event) {
         event.preventDefault();
@@ -50,8 +50,11 @@ function windowsLoad() {
     $("#time").focusout(function (event) {
         formInputCheck(this);
     });
+    $("#login_btn").click(function () {
+        postLogin();
+    });
     $("#register").click(function () {
-        postRegister()
+        postRegister();
     });
     var text_max = 500;
     $('#count_message').html(text_max + ' / ' + text_max);
@@ -99,6 +102,38 @@ function checkPassword() {
     }
 }
 
+function postLogin() {
+    $("#lgoin").attr("disabled", "disabled");
+    if ($("#l_password").val() === "")
+        return;
+    $.post('api.php',
+        {
+            action: 'Login',
+            username: $("#l_username").val(),
+            password: $("#l_password").val()
+        },
+        function (result) {
+            if (result.Code !== 0) {
+                $(".front .modal-dialog").before("<div class=\"alert alert-danger alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                    "<strong>Login not success!</strong> You should check your user or password, and try again later.\n" +
+                    "</div>");
+                $("#register").removeAttr("disabled");
+                setTimeout(function () {
+                    $(".register-alert").alert("close");
+                }, 2000);
+            } else {
+                $(".front .modal-dialog").before("<div class=\"alert alert-success alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                    "<strong>Login success!</strong> You should redirect automatically after 2 seconds, if not please click this <a href=\"javascript:location.reload();\" class=\"alert-link\">link</a>.\n" +
+                    "</div>");
+                setTimeout(function () {
+                    window.location.reload();
+                }, 2000)
+            }
+        },
+        'json'
+    );
+}
+
 function postRegister() {
     $("#register").attr("disabled", "disabled");
     if ($("#r_password").val() === "")
@@ -117,17 +152,17 @@ function postRegister() {
         },
         function (result) {
             if (result.Code !== 0) {
-                $(".modal-dialog .modal-login ").before("<div class=\"alert alert-danger alert-dismissable register-alert fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                $(".back .modal-dialog").before("<div class=\"alert alert-danger alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
                     "<strong>Register not success!</strong> You should check all of your information, and try again later.\n" +
-                    "</div>")
+                    "</div>");
                 $("#register").removeAttr("disabled");
                 setTimeout(function () {
                     $(".register-alert").alert("close");
                 }, 2000)
             } else {
-                $(".modal-dialog .modal-login ").before("<div class=\"alert alert-success alert-dismissable register-alert fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                $(".back .modal-dialog").before("<div class=\"alert alert-success alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
                     "<strong>Register success!</strong> You should redirect automatically after 2 seconds, if not please click this <a href=\"javascript:location.reload();\" class=\"alert-link\">link</a>.\n" +
-                    "</div>")
+                    "</div>");
                 setTimeout(function () {
                     window.location.reload();
                 }, 2000)
@@ -168,6 +203,8 @@ function formInputCheck(obj) {
         telephoneCheck(obj.value) ? $("#" + obj.id).addClass("is-valid") : $("#" + obj.id).addClass("is-invalid");
     } else if (obj.id == "c_r_password") {
         checkPassword();
+    } else if (obj.id == "t_l_password"){
+        l_beforeSubmit();
     }
 }
 

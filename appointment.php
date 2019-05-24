@@ -5,8 +5,6 @@
  */
 
 $page_type = 4;
-session_start();
-$_SESSION;
 require_once "theme/default/header.php";
 /*Main Start*/
 ?>
