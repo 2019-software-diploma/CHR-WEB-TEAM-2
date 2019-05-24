@@ -2,12 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: Shuaiqiang Yin
- * Date: 2019-03-11
- * Time: 16:05
  */
 ?>
 <!-- FOOTER DONE -->
-<footer class="bg-mine" id="footer">
+<footer class="bg-mine float-none" id="footer">
     <div class="container">
         <div class="row text-center text-xs-center text-sm-left text-md-left">
             <div class="col-xs-12 col-sm-3 col-md-3">

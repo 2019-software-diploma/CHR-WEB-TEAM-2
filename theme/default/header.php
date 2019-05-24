@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: Shuaiqiang Yin
- * Date: 2019-03-11
- * Time: 16:04
  */
 
 require_once "config/main.config.php";
@@ -36,7 +34,7 @@ require_once "config/main.config.php";
                     } ?>">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cloud based Healthcare Research</a>
                         <div class="dropdown-menu bg-dark">
-                            <a class="dropdown-item bg-dark text-light" href="#">Cloud Research</a>
+                            <a class="dropdown-item bg-dark text-light" href="/">Cloud Research</a>
                             <a class="dropdown-item bg-dark text-light" href="#">What's Cloud Computing</a>
                             <a class="dropdown-item bg-dark text-light" href="#">Cloud Type</a>
                             <a class="dropdown-item bg-dark text-light" href="#">Research Project</a>
@@ -47,7 +45,7 @@ require_once "config/main.config.php";
                     } ?>">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Get Involved</a>
                         <div class="dropdown-menu bg-dark">
-                            <a class="dropdown-item bg-dark text-light" href="/appointment.php">Make Appointment</a>
+                            <a class="dropdown-item bg-dark text-light" href="appointment.php">Make Appointment</a>
                             <a class="dropdown-item bg-dark text-light" href="#">Subscribe to News letter</a>
                         </div>
                     </li>
@@ -64,13 +62,13 @@ require_once "config/main.config.php";
                             <a class="dropdown-item bg-dark text-light" href="#">Our Team</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
+                    <li class="nav-item <?php if ($page_type === 8) { echo "active"; } ?>">
+                        <a class="nav-link" href="contact.php">Contact Us</a>
                     </li>
                 </ul>
                 <button type="button" class="nav-login btn btn-outline-dark" href="#Login" data-toggle="modal"
                         onclick="cleanDialog()">
-                    Login
+                    Sign In / Up
                 </button>
             </div>
         </div>

@@ -1,11 +1,10 @@
 <?php
-include_once "database.config.php";
 /**
  * Created by PhpStorm.
  * User: Shuaiqiang Yin
- * Date: 8/03/2019
- * Time: 1:03 PM
  */
+
+include_once "database.config.php";
 //Identity Declaration
 $Identity[0] = "Chief Operating Officer";
 $Identity[1] = "Chief Research Officer";
@@ -23,5 +22,5 @@ $PageType [4] = "Make An Appointment";
 $PageType [5] = "Post";
 $PageType [6] = "Forum";
 $PageType [7] = "Article";
-$PageType [8] = "Connect";
+$PageType [8] = "Connect Us";
 $PageType [9] = "About";

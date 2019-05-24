@@ -2,9 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Shuaiqiang Yin
- * Date: 2019-03-11
- * Time: 17:54
  */
+
 $page_type = 0;
 session_start();
 $_SESSION;

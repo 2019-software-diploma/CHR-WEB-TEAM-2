@@ -1,9 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: CIT214396
- * Date: 8/03/2019
- * Time: 1:07 PM
+ * User: Shuaiqiang Yin
  */
 
 $MySQL ["Host"] = "localhost";

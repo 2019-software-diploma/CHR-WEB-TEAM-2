@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: Shuaiqiang Yin
- * Date: 2019-05-13
- * Time: 13:30
  */
 
 $page_type = 4;
