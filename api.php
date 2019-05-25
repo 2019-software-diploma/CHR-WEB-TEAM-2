@@ -43,18 +43,38 @@ function Login($username, $password)
             $SQL = $MySQL["GetClient"];
             $SQL = str_replace('#ID', $username, $SQL);
             $res = mysqli_query($mysql_con, $SQL);
-            $row = mysqli_fetch_row($res);
-            session_name('user');
-            session_start();
-            $_SESSION['UserID'] = $username;
-            $_SESSION['FirstName'] = $row [0];
-            $_SESSION['LastName'] = $row [1];
-            $_SESSION['Address'] = $row [2];
-            $_SESSION['Phone_Number'] = $row [3];
-            $_SESSION['Subscription'] = $row [4];
-            $_SESSION['Email'] = $row [5];
-            echo json_encode($result);
-            return;
+            if (mysqli_num_rows($res) > 0){
+                $row = mysqli_fetch_row($res);
+                session_name('user');
+                session_start();
+                $_SESSION['UserID'] = $username;
+                $_SESSION['FirstName'] = $row [0];
+                $_SESSION['LastName'] = $row [1];
+                $_SESSION['Address'] = $row [2];
+                $_SESSION['Phone_Number'] = $row [3];
+                $_SESSION['Subscription'] = $row [4];
+                $_SESSION['Email'] = $row [5];
+                $_SESSION['Level'] = 5;
+                echo json_encode($result);
+                return;
+            } else {
+                $SQL = $MySQL["GetStaff"];
+                $SQL = str_replace('#ID', $username, $SQL);
+                $res = mysqli_query($mysql_con, $SQL);
+                $row = mysqli_fetch_row($res);
+                session_name('user');
+                session_start();
+                $_SESSION['UserID'] = $username;
+                $_SESSION['FirstName'] = $row [0];
+                $_SESSION['LastName'] = $row [1];
+                $_SESSION['Address'] = "";
+                $_SESSION['Phone_Number'] = "";
+                $_SESSION['Subscription'] = "";
+                $_SESSION['Email'] = $row [3];
+                $_SESSION['Level'] = $row [2];
+                echo json_encode($result);
+                return;
+            }
         }
     }
     $result = array("Code" => 1, "Message" => "Error");
@@ -63,7 +83,6 @@ function Login($username, $password)
 
 function Register($firstName, $lastName, $password, $email, $newsletter)
 {
-    require_once "sendEmail.php";
     global $MySQL, $mysql_con;
     $result = array("Code" => 0, "Message" => "Successful");
     $time = microtime();
@@ -92,14 +111,17 @@ function Register($firstName, $lastName, $password, $email, $newsletter)
     $_SESSION['Phone_Number'] = "";
     $_SESSION['Subscription'] = $newsletter;
     $_SESSION['Email'] = $email;
+    $_SESSION['Level'] = 5;
     $time = date("d/m/Y");
-    $textNews = "Receive newsletter";
-    if ($newsletter === 0) {
-        $textNews = "Don't receive newsletter";
+    //$textNews = "Receive newsletter";
+    $textNews = "Yes";
+    if ($newsletter == 0) {
+        //$textNews = "Don't receive newsletter";
+        $textNews = "No";
     }
     $ip = get_client_ip();
-    exec("php /var/www/chrweb_home/sendEmail.php \"$firstName . \" \" . $lastName\" \"$ClientID\" \"$ip\" \"$time\" \"$textNews\" \"$email\"  > /dev/null 2> /dev/null &");
-    echo "php /var/www/chrweb_home/sendEmail.php \"$firstName $lastName\" \"$ClientID\" \"$ip\" \"$time\" \"$textNews\" \"$email\"  > /dev/null 2> /dev/null &";
+    exec("php " . __DIR__ . "/sendEmail.php \"$firstName $lastName\" \"$ClientID\" \"$ip\" \"$time\" \"$textNews\" \"$email\"  > /dev/null 2> /dev/null &");
+    //echo "php /var/www/chrweb_home/sendEmail.php \"$firstName $lastName\" \"$ClientID\" \"$ip\" \"$time\" \"$textNews\" \"$email\"  > /dev/null 2> /dev/null &";
     //sendWelcomeEmail($firstName . " " . $lastName, $ClientID, get_client_ip(), $time, $textNews, $email);
 }
 
@@ -114,6 +136,7 @@ function Logout(){
     unset($_SESSION['Phone_Number']);
     unset($_SESSION['Subscription']);
     unset($_SESSION['Email']);
+    unset($_SESSION['Level']);
     echo "<h1>Redirect to home page!</h1> <script type='application/javascript'>window.location = \"https://www.chrweb.tk\"</script>";
 }
 

@@ -49,21 +49,18 @@ require_once "theme/default/header.php";
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">Test Branch 1</th>
-                    <td>Test Address 1</td>
-                    <td>02 1234 5678</td>
-                </tr>
-                <tr>
-                    <th scope="row">Test Branch 2</th>
-                    <td>Test Address 2</td>
-                    <td>02 1234 5678</td>
-                </tr>
-                <tr>
-                    <th scope="row">Test Branch 3</th>
-                    <td>Test Address 3</td>
-                    <td>02 1234 5678</td>
-                </tr>
+                <?php
+                    require_once "config/database.Connection.php";
+                    $res = mysqli_query($mysql_con, $MySQL ["GetBranch"]);
+                    while ($row = mysqli_fetch_row($res)){
+                        echo "<tr>";
+                        echo "<th scope=\"row\">$row[0]</th>";
+                        echo "<td>$row[1]</td>";
+                        echo "<td>$row[2]</td>";
+                        echo "</tr>";
+                    }
+
+                ?>
                 </tbody>
             </table>
         </aside>

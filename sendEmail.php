@@ -4,13 +4,13 @@
  * User: Shuaiqiang Yin
  */
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
 require_once __DIR__ . '/lib/phpmailer/Exception.php';
 require_once __DIR__ . '/lib/phpmailer/PHPMailer.php';
 require_once __DIR__ . '/lib/phpmailer/SMTP.php';
 require_once __DIR__ . '/config/database.Connection.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 sendWelcomeEmail($argv[1], $argv[2], $argv[3], $argv[4], $argv[5], $argv[6]);
 

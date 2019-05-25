@@ -82,10 +82,22 @@ if ($page_type === 6 && !isset($_SESSION['Email'])){
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user"></i> <?php echo $_SESSION["FirstName"]; ?> </a>
+                                <i class="fas fa-user"></i>&nbsp;&nbsp;&nbsp; <?php echo $_SESSION["FirstName"]; ?> </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-info"
                                  aria-labelledby="navbarDropdownMenuLink-4">
+                                <a class="dropdown-item dropdown-item-text disabled" href="#"><?php echo $Identity[$_SESSION['Level']]; ?></a>
+                                <div class="dropdown-divider"></div>
+                                <?php
+                                    if ($_SESSION['Level'] == 5 || $_SESSION['Level'] == 6){
+                                ?>
                                 <a class="dropdown-item" href="profile.php">My account</a>
+                                <?php
+                                    } else {
+                                ?>
+                                <a class="dropdown-item" href="management.php">Management</a>
+                                <?php
+                                    }
+                                ?>
                                 <a class="dropdown-item" href="api.php?action=logout">Log out</a>
                             </div>
                         </li>
