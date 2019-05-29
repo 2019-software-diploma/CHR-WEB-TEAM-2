@@ -14,7 +14,7 @@ require_once "theme/default/header.php";
         <div class="content">
             <h3>Find a Journal!</h3>
             <p></p>
-            <form method="post" action="#">
+            <form method="post" action="">
                 <div id="custom-search-input">
                     <div class="input-group">
                         <input type="text" class="search-query" placeholder="Ex. Journal Name, Author Name....">

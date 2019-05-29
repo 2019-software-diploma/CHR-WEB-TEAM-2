@@ -7,9 +7,12 @@
 $page_type = 4;
 require_once "theme/default/header.php";
 ?>
-<main class="container contact">
+<main class="container">
     <div class="row">
         <aside class="col">
+            <div class="other_main_title">
+                <h2>Contact Us</h2>
+            </div>
             <form action="api.php" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -40,6 +43,9 @@ require_once "theme/default/header.php";
             </form>
         </aside>
         <aside class="col">
+            <div class="other_main_title">
+                <h2>Branches</h2>
+            </div>
             <table class="table table-striped">
                 <thead>
                 <tr>

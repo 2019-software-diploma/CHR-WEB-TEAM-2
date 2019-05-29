@@ -4,6 +4,8 @@
  * User: Shuaiqiang Yin
  */
 
+die(print_r($_POST));
+
 require_once 'config/database.Connection.php';
 if (isset($_POST['action']))
     $action = $_POST['action'];

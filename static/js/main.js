@@ -74,6 +74,11 @@ function windowsLoad() {
         var text_remaining = text_max - text_length;
         $('#count_message').html(text_remaining + ' / ' + text_max);
     });
+    $('#comment').keyup(function () {
+        var text_length = $('#comment').val().length;
+        var text_remaining = text_max - text_length;
+        $('#count_message').html(text_remaining + ' / ' + text_max);
+    });
     $('#reason').keypress(function () {
         return $('#reason').val().length < 500;
     });

@@ -8,11 +8,14 @@ $page_type = 6;
 require_once "theme/default/header.php";
 ?>
 <main>
-    <div class="container contact">
+    <div class="container">
         <div class="row">
             <div class="col-md-4">
             </div>
             <div class="col-md-4">
+                <div class="other_main_title">
+                    <h2>My profile</h2>
+                </div>
                 <form id="profileForm" action="" method="post">
                     <div class="form-group">
                         <label for="id">User ID</label>
@@ -24,11 +27,11 @@ require_once "theme/default/header.php";
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>
-                        <input type="text" class="form-control" name="address" id="address" placeholder="Address" value="<?php echo $_SESSION['Address'];?>">
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Address" value="<?php echo $_SESSION['Address'];?>" placeholder="123 Street Name, Suburb, State, Postcode">
                     </div>
                     <div class="form-group">
                         <label for="phone_number">Phone Number</label>
-                        <input type="text" class="form-control" id="phone_number" value="<?php echo $_SESSION['Phone_Number'];?>" name="phone_number" placeholder="Phone Number" required>
+                        <input type="text" class="form-control" id="phone_number" value="<?php echo $_SESSION['Phone_Number'];?>" name="phone_number" placeholder="Phone Number" placeholder="0412345678">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
