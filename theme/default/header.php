@@ -7,7 +7,7 @@
 require_once "config/main.config.php";
 session_name('user');
 session_start();
-if (($page_type === 1 || $page_type === 6 || $page_type === 2) && !isset($_SESSION['Email'])){
+if (($page_type === 1 || $page_type === 6 || $page_type === 2 || $page_type === 8) && !isset($_SESSION['Email'])){
     header('Location: index.php');
     exit;
 }
@@ -44,7 +44,7 @@ if (($page_type === 1 || $page_type === 6 || $page_type === 2) && !isset($_SESSI
                             <a class="dropdown-item bg-dark text-light" href="#">Research Project</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown <?php if ($page_type === 1 || $page_type === 6 || $page_type === 2) { echo "active"; } ?>">
+                    <li class="nav-item dropdown <?php if ($page_type === 1 || $page_type === 6 || $page_type === 2|| $page_type === 7) { echo "active"; } ?>">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Get Involved</a>
                         <div class="dropdown-menu bg-dark">
                             <a class="dropdown-item bg-dark text-light" href="appointment.php">Make Appointment</a>
@@ -52,6 +52,7 @@ if (($page_type === 1 || $page_type === 6 || $page_type === 2) && !isset($_SESSI
                             <?php
                                 if (isset($_SESSION['Email'])){
                                     echo "<a class=\"dropdown-item bg-dark text-light\" href=\"post.php\">Post to fourm</a>";
+                                    echo "<a class=\"dropdown-item bg-dark text-light\" href=\"forum.php\">Fourm</a>";
                                 }
                             ?>
                         </div>
@@ -59,7 +60,7 @@ if (($page_type === 1 || $page_type === 6 || $page_type === 2) && !isset($_SESSI
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Out ICT Solutions</a>
                         <div class="dropdown-menu bg-dark">
-                            <a class="dropdown-item bg-dark text-light" href="#">Publications</a>
+                            <a class="dropdown-item bg-dark text-light" href="publications.php">Publications</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

@@ -41,7 +41,7 @@ require_once 'config/database.Connection.php';
                            placeholder="1234 Main St, ACT, 2614" value="<?php if (isset($_SESSION['Email'])) { echo $_SESSION['Address'];} ?>" required>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="staff">Branch</label>
+                    <label for="branch">Branch</label>
                     <select id="branch" name="branch" class="form-control" required>
                         <?php
                             $res = mysqli_query($mysql_con, $MySQL ["GetBranch"]);
@@ -54,7 +54,7 @@ require_once 'config/database.Connection.php';
             </div>
             <div class="form-group">
                 <label for="reason">Brief of reason:</label>
-                <textarea class="form-control" rows="5" id="reason" name="reason" required maxlength="500"></textarea>
+                <textarea class="form-control" rows="5" id="reason" name="reason" required maxlength="255"></textarea>
                 <span class="float-right tag tag-default" id="count_message"></span>
             </div>
             <p class="inForm-text">Who would you like to make an appointment with and what time?</p>

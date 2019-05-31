@@ -74,7 +74,7 @@ function windowsLoad() {
     $("#postMaa").click(function () {
         postMaa();
     });
-    var text_max = 500;
+    var text_max = 255;
     $('#count_message').html(text_max + ' / ' + text_max);
     $('#reason').keyup(function () {
         var text_length = $('#reason').val().length;

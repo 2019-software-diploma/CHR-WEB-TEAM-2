@@ -25,6 +25,7 @@
                     <?php
                     if (isset($_SESSION['Email'])){
                         echo "<li><a href=\"post.php\"><i class=\"fa fa-angle-double-right\"></i>Post to forum</a></li>";
+                        echo "<li><a href=\"forum.php\"><i class=\"fa fa-angle-double-right\"></i>Forum</a></li>";
                     }
                     ?>
                 </ul>

@@ -24,7 +24,7 @@ require_once "theme/default/header.php";
                 </div>
                 <div class="form-group">
                     <label for="comment">Comment:</label>
-                    <textarea class="form-control" rows="5" id="comment" name="Comment" required maxlength="500" placeholder="Comment"></textarea>
+                    <textarea class="form-control" rows="5" id="comment" name="Comment" required maxlength="255" placeholder="Comment"></textarea>
                     <span class="float-right tag tag-default" id="count_message"></span>
                 </div>
                 <div class="form-group">
