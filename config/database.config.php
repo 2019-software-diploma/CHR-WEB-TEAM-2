@@ -6,8 +6,8 @@
 
 $MySQL ["Host"] = "localhost";
 $MySQL ["Username"] = "root";
-//$MySQL ["Password"] = "Xx%jcsa#eM%x5x@z";
-$MySQL ["Password"] = "";
+$MySQL ["Password"] = "Xx%jcsa#eM%x5x@z";
+//$MySQL ["Password"] = "";
 $MySQL ["Database"] = "CHR";
 
 // Initialize Database
