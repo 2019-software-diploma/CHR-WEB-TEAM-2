@@ -10,6 +10,9 @@ require_once "theme/default/header.php";
 ?>
 <main>
     <div class="container publications">
+        <div class="other_main_title">
+            <h2 class="publications">Publications</h2>
+        </div>
         <form method="post" action="api.php">
             <div id="custom-search-input">
                 <div class="input-group">
@@ -22,11 +25,11 @@ require_once "theme/default/header.php";
                         <label for="all">All</label>
                     </li>
                     <li>
-                        <input type="radio" id="category-1" name="radio_search" value="Category-1">
+                        <input type="radio" id="Health" name="radio_search" value="Category-1">
                         <label for="Health">Health</label>
                     </li>
                     <li>
-                        <input type="radio" id="category-2" name="radio_search" value="Category-2">
+                        <input type="radio" id="Medical" name="radio_search" value="Category-2">
                         <label for="Medical">Medical</label>
                     </li>
                 </ul>

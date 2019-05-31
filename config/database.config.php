@@ -18,10 +18,13 @@ $MySQL ["Database"] = "CHR";
 //SQL scents
 $MySQL ["InsertClient"] = "INSERT INTO `client` VALUES ('#ClientID', '#FirstName', '#LastName', '', '', #NewsLetter, '#Email');";
 $MySQL ["InsertMember"] = "INSERT INTO `account` VALUES ('#ClientID', '#Password', NOW(), '#RegIP', NOW(), '#RegIP');";
+$MySQL ["InsertPost"] = "INSERT INTO `forum` VALUES ('#ForumID', '#ClientID', '#Title', '#Comment', NOW());";
+$MySQL ["InsertMaa"] = "INSERT INTO `appointments` VALUES ('#ClientID', '#StaffID', '#Date', '#Branch', '#Reason', 0);";
 
 $MySQL ["GetAccount"] = "SELECT Password FROM `account` WHERE Member_ID = '#ID';";
 $MySQL ["GetClient"] = "SELECT First_Name, Last_Name, Address, Phone_Number, Subscription_Status, Email FROM `client` WHERE Client_ID = '#ID';";
 $MySQL ["GetStaff"] = "SELECT First_Name, Last_Name, Position, Email FROM `staff` WHERE Staff_ID = '#ID';";
-$MySQL ["GetBranch"] = "SELECT Branch_Name, Address, Phone_number FROM `branch`";
+$MySQL ["GetAllStaff"] = "SELECT Staff_ID, First_Name, Last_Name FROM `staff`;";
+$MySQL ["GetBranch"] = "SELECT Branch_Name, Address, Phone_number, Branch_Number FROM `branch`";
 
 $MySQL ["UpdateProfile"] = "UPDATE `client` SET Address = '#Address', Phone_Number = '#Phone', Subscription_Status = #Sub, Email = '#Email' WHERE Client_ID = '#ID';";

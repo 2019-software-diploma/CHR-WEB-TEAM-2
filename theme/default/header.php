@@ -7,7 +7,7 @@
 require_once "config/main.config.php";
 session_name('user');
 session_start();
-if (($page_type === 6 || $page_type === 2) && !isset($_SESSION['Email'])){
+if (($page_type === 1 || $page_type === 6 || $page_type === 2) && !isset($_SESSION['Email'])){
     header('Location: index.php');
     exit;
 }
@@ -49,7 +49,11 @@ if (($page_type === 6 || $page_type === 2) && !isset($_SESSION['Email'])){
                         <div class="dropdown-menu bg-dark">
                             <a class="dropdown-item bg-dark text-light" href="appointment.php">Make Appointment</a>
                             <a class="dropdown-item bg-dark text-light" href="profile.php">Subscribe to News letter</a>
-                            <a class="dropdown-item bg-dark text-light" href="post.php">Post to fourm</a>
+                            <?php
+                                if (isset($_SESSION['Email'])){
+                                    echo "<a class=\"dropdown-item bg-dark text-light\" href=\"post.php\">Post to fourm</a>";
+                                }
+                            ?>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

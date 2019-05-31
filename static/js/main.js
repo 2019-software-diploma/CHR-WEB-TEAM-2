@@ -25,6 +25,12 @@ function windowsLoad() {
     $("#profileForm").submit(function (event) {
         event.preventDefault();
     });
+    $("#postForumForm").submit(function (event) {
+        event.preventDefault();
+    });
+    $("#maaForm").submit(function (event) {
+        event.preventDefault();
+    });
     $("#appt_Reset").click(function (event) {
         formReset();
     });
@@ -61,6 +67,12 @@ function windowsLoad() {
     });
     $("#update").click(function () {
         postProfile();
+    });
+    $("#postForum").click(function () {
+        postForum();
+    });
+    $("#postMaa").click(function () {
+        postMaa();
     });
     var text_max = 500;
     $('#count_message').html(text_max + ' / ' + text_max);
@@ -275,6 +287,75 @@ function postProfile() {
                     "</div>");
                 setTimeout(function () {
                     window.location.reload();
+                }, 2000)
+            }
+        },
+        'json'
+    );
+}
+/* Forum */
+function postForum() {
+    $("#postForum").attr("disabled", "disabled");
+    if ($("#comment").val() === "" && $("#title").val() === "")
+        return;
+    $.post('api.php',
+        {
+            action: 'post',
+            Member_ID: $("#Member_ID").val(),
+            title: $("#title").val(),
+            comment: $("#comment").val()
+        },
+        function (result) {
+            if (result.Code !== 0) {
+                $(".other_main_title").before("<div class=\"alert alert-danger alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                    "<strong>Post not success!</strong> You should check all of your information, and try again later.\n" +
+                    "</div>");
+                $("#postForum").removeAttr("disabled");
+                setTimeout(function () {
+                    $(".alert").alert("close");
+                }, 2000)
+            } else {
+                $(".other_main_title").before("<div class=\"alert alert-success alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                    "<strong>Post success!</strong> You should redirect automatically after 2 seconds, if not please click this <a href=\"javascript:location.href = 'https://www.chrweb.tk';\" class=\"alert-link\">link</a>.\n" +
+                    "</div>");
+                setTimeout(function () {
+                    window.location.href = "https://www.chrweb.tk";
+                }, 2000)
+            }
+        },
+        'json'
+    );
+}
+/* Make an appointment */
+function postMaa() {
+    $("#postMaa").attr("disabled", "disabled");
+    if ($("#reason").val() === "")
+        return;
+    $.post('api.php',
+        {
+            action: 'maa',
+            Client_ID: $("#client_id").val(),
+            Staff_ID: $("#staff").val(),
+            Date: $("#date").val(),
+            Time: $("#time").val(),
+            Branch: $("#branch").val(),
+            Reason: $("#reason").val()
+        },
+        function (result) {
+            if (result.Code !== 0) {
+                $(".maa_main_title").before("<div class=\"alert alert-danger alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                    "<strong>Make an appointment not success!</strong> You should check all of your information, and try again later.\n" +
+                    "</div>");
+                $("#postForum").removeAttr("disabled");
+                setTimeout(function () {
+                    $(".alert").alert("close");
+                }, 2000)
+            } else {
+                $(".maa_main_title").before("<div class=\"alert alert-success alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
+                    "<strong>Make an appointment success!</strong> You should redirect automatically after 2 seconds, if not please click this <a href=\"javascript:location.href = 'https://www.chrweb.tk';\" class=\"alert-link\">link</a>.\n" +
+                    "</div>");
+                setTimeout(function () {
+                    window.location.href = "https://www.chrweb.tk";
                 }, 2000)
             }
         },

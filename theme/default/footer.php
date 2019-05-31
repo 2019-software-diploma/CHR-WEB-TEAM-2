@@ -22,12 +22,17 @@
                 <ul class="list-unstyled quick-links">
                     <li><a href="/appointment.php"><i class="fa fa-angle-double-right"></i>Make Appointment</a></li>
                     <li><a href="profile.php"><i class="fa fa-angle-double-right"></i>Subscribe to News letter</a></li>
+                    <?php
+                    if (isset($_SESSION['Email'])){
+                        echo "<li><a href=\"post.php\"><i class=\"fa fa-angle-double-right\"></i>Post to forum</a></li>";
+                    }
+                    ?>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3">
                 <h5>Out ICT Solutions</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>Publications</a></li>
+                    <li><a href="publications.php"><i class="fa fa-angle-double-right"></i>Publications</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3">

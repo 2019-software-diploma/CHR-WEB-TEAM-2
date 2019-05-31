@@ -4,8 +4,6 @@
  * User: Shuaiqiang Yin
  */
 
-die(print_r($_POST));
-
 require_once 'config/database.Connection.php';
 if (isset($_POST['action']))
     $action = $_POST['action'];
@@ -21,12 +19,16 @@ switch ($action) {
             Register($_POST['first_name'], $_POST['last_name'], $_POST['password'], $_POST['email'], $_POST['newsletter']);
         break;
     case 'maa':
+        maa($_POST['Client_ID'], $_POST['Staff_ID'], $_POST['Date'], $_POST['Time'], $_POST['Branch'], $_POST['Reason']);
         break;
     case 'logout':
         Logout();
         break;
     case 'update':
         UpdateProfile($_POST['ID'], $_POST['address'], $_POST['phone'], $_POST['sub'], $_POST['email']);
+        break;
+    case 'post':
+        AddPost($_POST['Member_ID'], $_POST['title'], $_POST['comment']);
         break;
     default:
         print_r($action);
@@ -159,6 +161,45 @@ function UpdateProfile($ID, $address, $phone, $sub, $email){
         $_SESSION['Phone_Number'] = $phone;
         $_SESSION['Subscription'] = $sub;
         $_SESSION['Email'] = $email;
+        echo json_encode($result);
+        return;
+    }
+    $result = array("Code" => 1, "Message" => "Error");
+    echo json_encode($result);
+}
+
+function AddPost($UserID, $Title, $Comment){
+    global $mysql_con, $MySQL;
+    $result = array("Code" => 0, "Message" => "Successful");
+    $time = microtime();
+    $ForumID = substr($time, strlen($time) - 5, 5);
+    $SQL = $MySQL ["InsertPost"];
+    $SQL = str_replace('#ForumID', $ForumID, $SQL);
+    $SQL = str_replace('#ClientID', $UserID, $SQL);
+    $SQL = str_replace('#Title', $Title, $SQL);
+    $SQL = str_replace('#Comment', $Comment, $SQL);
+    $res = mysqli_query($mysql_con, $SQL);
+    if ($res) {
+        echo json_encode($result);
+        return;
+    }
+    $result = array("Code" => 1, "Message" => "Error");
+    echo json_encode($result);
+}
+
+function maa($ClientID, $StaffID, $Date, $Time, $Branch, $Reason){
+    global $mysql_con, $MySQL;
+    $result = array("Code" => 0, "Message" => "Successful");
+    $time_posted = strtotime($Date . " " . $Time);
+    $time_posted = date("Y-m-d H:i:s", $time_posted);
+    $SQL = $MySQL['InsertMaa'];
+    $SQL = str_replace('#ClientID', $ClientID, $SQL);
+    $SQL = str_replace('#StaffID', $StaffID, $SQL);
+    $SQL = str_replace('#Date', $time_posted, $SQL);
+    $SQL = str_replace('#Branch', $Branch, $SQL);
+    $SQL = str_replace('#Reason', $Reason, $SQL);
+    $res = mysqli_query($mysql_con, $SQL);
+    if ($res){
         echo json_encode($result);
         return;
     }

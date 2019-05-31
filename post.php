@@ -17,7 +17,7 @@ require_once "theme/default/header.php";
                 <h2>Post to forum</h2>
             </div>
             <form id="postForumForm" action="" method="post">
-                <input type="hidden" name="Member_ID" value="<?php echo $_SESSION['UserID'];?>">
+                <input id="Member_ID" type="hidden" name="Member_ID" value="<?php echo $_SESSION['UserID'];?>">
                 <div class="form-group">
                     <label for="title">Title:</label>
                     <input type="text" class="form-control" id="title" name="Title" placeholder="Title" required>

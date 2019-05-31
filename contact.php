@@ -65,7 +65,6 @@ require_once "theme/default/header.php";
                         echo "<td>$row[2]</td>";
                         echo "</tr>";
                     }
-
                 ?>
                 </tbody>
             </table>
