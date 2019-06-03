@@ -124,8 +124,17 @@ function Register($firstName, $lastName, $password, $email, $newsletter)
         $textNews = "No";
     }
     $ip = get_client_ip();
-    exec("php " . __DIR__ . "/sendEmail.php \"$firstName $lastName\" \"$ClientID\" \"$ip\" \"$time\" \"$textNews\" \"$email\"  > /dev/null 2> /dev/null &");
-    //echo "php /var/www/chrweb_home/sendEmail.php \"$firstName $lastName\" \"$ClientID\" \"$ip\" \"$time\" \"$textNews\" \"$email\"  > /dev/null 2> /dev/null &";
+    $SQL = $MySQL ["InsertWelcomeEmail"];
+    $SQL = str_replace('#Name', $firstName . " " . $lastName, $SQL);
+    $SQL = str_replace('#ClientID', $ClientID, $SQL);
+    $SQL = str_replace('#IP', $ip, $SQL);
+    $SQL = str_replace('#Time', $time, $SQL);
+    $SQL = str_replace('#News', $textNews, $SQL);
+    $SQL = str_replace('#Email', $email, $SQL);
+    mysqli_query($mysql_con, $SQL);
+    exec("wget -qO- http://CapriviHealthcareResearch2.itdp.com.au/sendEmail.php?clientid=" . $ClientID);
+    //exec("/bin/php " . __DIR__ . "/sendEmail.php \"$firstName $lastName\" \"$ClientID\" \"$ip\" \"$time\" \"$textNews\" \"$email\"  > /dev/null 2> /dev/null &");
+    //echo "/bin/php " . __DIR__ . "/sendEmail.php \"$firstName $lastName\" \"$ClientID\" \"$ip\" \"$time\" \"$textNews\" \"$email\"  > /dev/null 2> /dev/null &";
     //sendWelcomeEmail($firstName . " " . $lastName, $ClientID, get_client_ip(), $time, $textNews, $email);
 }
 
@@ -141,7 +150,7 @@ function Logout(){
     unset($_SESSION['Subscription']);
     unset($_SESSION['Email']);
     unset($_SESSION['Level']);
-    echo "<h1>Redirect to home page!</h1> <script type='application/javascript'>window.location = \"https://www.chrweb.tk\"</script>";
+    echo "<h1>Redirect to home page!</h1> <script type='application/javascript'>window.location = \"http://caprivihealthcareresearch2.itdp.com.au/\"</script>";
 }
 
 function UpdateProfile($ID, $address, $phone, $sub, $email){

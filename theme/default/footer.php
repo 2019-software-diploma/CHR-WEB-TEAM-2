@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
                 <p><u><a href="/">Caprivi Healthcare Research</a></u> is a non-profit organisation.</p>
-                <p class="h6">&copy 2019 All right Reversed. <a href="#">CIT Diploma Software Dev. Team 2</a></p>
+                <p class="h6">&copy 2019 All right Reversed. <a href="https://github.com/2019-software-diploma/CHR-WEB-TEAM-2">Information of Technology Diploma Project - CIT Diploma Software Dev. Team 2</a></p>
             </div>
         </div>
     </div>

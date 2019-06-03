@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Shuaiqiang Yin
  */
-
+ 
 require_once __DIR__ . '/lib/phpmailer/Exception.php';
 require_once __DIR__ . '/lib/phpmailer/PHPMailer.php';
 require_once __DIR__ . '/lib/phpmailer/SMTP.php';
@@ -12,16 +12,23 @@ require_once __DIR__ . '/config/database.Connection.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-sendWelcomeEmail($argv[1], $argv[2], $argv[3], $argv[4], $argv[5], $argv[6]);
+if (!isset($_GET['clientid'])){
+    die("Error");
+}
 
-function sendWelcomeEmail($name, $cliendID, $regIP, $regDate, $newsLatter, $email)
+sendWelcomeEmail($_GET['clientid']);
+
+function sendWelcomeEmail($clientID)
 {
     global $mysql_con;
     $SQL = "SELECT AccountName, Password, DisplyName FROM `email` WHERE Account_ID = 'NoReply';";
     if($result = mysqli_query($mysql_con,$SQL)){
         $row = mysqli_fetch_row($result);
     }
-    mysqli_free_result($result);
+    $SQL = "SELECT * FROM `welcomeEmail` WHERE ClientID = '" . $clientID . "'";
+    if($result = mysqli_query($mysql_con,$SQL)){
+        $row2 = mysqli_fetch_row($result);
+    }
     $mail = new PHPMailer(true);
     try {
         $mail->CharSet = "UTF-8";
@@ -33,14 +40,14 @@ function sendWelcomeEmail($name, $cliendID, $regIP, $regDate, $newsLatter, $emai
         $mail->SMTPSecure = '';
         $mail->Port = 587;
         $mail->setFrom($row[0], $row[2]);
-        $mail->addAddress($email);
+        $mail->addAddress($row2[5]);
         $fileHandle = fopen(__DIR__ . "/lib/welcome.html", "r") or die("Unable to open file!");
         $welcome = fread($fileHandle, filesize(__DIR__ . "/lib/welcome.html"));
-        $welcome = str_replace('#NAME', $name, $welcome);
-        $welcome = str_replace('#ClientID', $cliendID, $welcome);
-        $welcome = str_replace('#RegIP', $regIP, $welcome);
-        $welcome = str_replace('#RegDate', $regDate, $welcome);
-        $welcome = str_replace('#Newsletter', $newsLatter, $welcome);
+        $welcome = str_replace('#NAME', $row2[0], $welcome);
+        $welcome = str_replace('#ClientID', $clientID, $welcome);
+        $welcome = str_replace('#RegIP', $row2[2], $welcome);
+        $welcome = str_replace('#RegDate', $row2[3], $welcome);
+        $welcome = str_replace('#Newsletter', $row2[4], $welcome);
         fclose($fileHandle);
         $mail->isHTML(true);
         $mail->Subject = 'Welcome!';

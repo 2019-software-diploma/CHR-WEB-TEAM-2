@@ -5,10 +5,10 @@
  */
 
 $MySQL ["Host"] = "localhost";
-$MySQL ["Username"] = "root";
+$MySQL ["Username"] = "itdpcoma_chrweb2";
 $MySQL ["Password"] = "Xx%jcsa#eM%x5x@z";
 //$MySQL ["Password"] = "";
-$MySQL ["Database"] = "CHR";
+$MySQL ["Database"] = "itdpcoma_chrweb2";
 
 // Initialize Database
 //$MySQL ["DropDatabase"] = "DROP TABLE IF EXISTS `#Database`;";
@@ -20,11 +20,13 @@ $MySQL ["InsertClient"] = "INSERT INTO `client` VALUES ('#ClientID', '#FirstName
 $MySQL ["InsertMember"] = "INSERT INTO `account` VALUES ('#ClientID', '#Password', NOW(), '#RegIP', NOW(), '#RegIP');";
 $MySQL ["InsertPost"] = "INSERT INTO `forum` VALUES ('#ForumID', '#ClientID', '#Title', '#Comment', NOW());";
 $MySQL ["InsertMaa"] = "INSERT INTO `appointments` VALUES ('#ClientID', '#StaffID', '#Date', '#Branch', '#Reason', 0);";
+$MySQL ["InsertWelcomeEmail"] = "INSERT INTO `welcomeEmail` VALUES('#Name', '#ClientID', '#IP', '#Time', '#News', '#Email');";
 
 $MySQL ["GetAccount"] = "SELECT Password FROM `account` WHERE Member_ID = '#ID';";
 $MySQL ["GetClient"] = "SELECT First_Name, Last_Name, Address, Phone_Number, Subscription_Status, Email FROM `client` WHERE Client_ID = '#ID';";
 $MySQL ["GetStaff"] = "SELECT First_Name, Last_Name, Position, Email FROM `staff` WHERE Staff_ID = '#ID';";
 $MySQL ["GetAllStaff"] = "SELECT Staff_ID, First_Name, Last_Name FROM `staff`;";
 $MySQL ["GetBranch"] = "SELECT Branch_Name, Address, Phone_number, Branch_Number FROM `branch`";
+//$MySQL ["GetWelcomeEmail"] = "SELECT * FROM `welcomeEmail` WHERE ClientID = '#ClientID'";
 
 $MySQL ["UpdateProfile"] = "UPDATE `client` SET Address = '#Address', Phone_Number = '#Phone', Subscription_Status = #Sub, Email = '#Email' WHERE Client_ID = '#ID';";

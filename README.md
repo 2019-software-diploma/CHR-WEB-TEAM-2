@@ -1,5 +1,6 @@
 # CHR Web Project Team 2
 ## &copy;Copyright
+Information of Technology Diploma Project  
 Canberra Institute of Technology  
 2019 SOFTWARE DEV. DIPLOMA  
 Chr Web Project for Assessment 3  
@@ -8,10 +9,9 @@ Made By Team 2
 
 ## Demo
 System:  
-[https://www.chrweb.tk](https://www.chrweb.tk)  
+[http://caprivihealthcareresearch2.itdp.com.au/](http://caprivihealthcareresearch2.itdp.com.au/)  
 Online Database Access:  
-[https://admin.chrweb.tk/](https://admin.chrweb.tk/)  
-All site SSL now!!!!!!!  
+Hide(Only Intranet Access)  
 
 ## Features
 
