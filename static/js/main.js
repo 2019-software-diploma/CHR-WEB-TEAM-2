@@ -316,10 +316,10 @@ function postForum() {
                 }, 2000)
             } else {
                 $(".other_main_title").before("<div class=\"alert alert-success alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
-                    "<strong>Post success!</strong> You should redirect automatically after 2 seconds, if not please click this <a href=\"javascript:location.href = 'https://www.chrweb.tk';\" class=\"alert-link\">link</a>.\n" +
+                    "<strong>Post success!</strong> You should redirect automatically after 2 seconds, if not please click this <a href=\"javascript:location.href = 'http://caprivihealthcareresearch2.itdp.com.au';\" class=\"alert-link\">link</a>.\n" +
                     "</div>");
                 setTimeout(function () {
-                    window.location.href = "https://www.chrweb.tk";
+                    window.location.href = "http://caprivihealthcareresearch2.itdp.com.au/forum.php";
                 }, 2000)
             }
         },
@@ -352,10 +352,10 @@ function postMaa() {
                 }, 2000)
             } else {
                 $(".maa_main_title").before("<div class=\"alert alert-success alert-dismissable fade show\" data-dismiss=\"alert\" data-alert=\"alert\" role=\"alert\">\n" +
-                    "<strong>Make an appointment success!</strong> You should redirect automatically after 2 seconds, if not please click this <a href=\"javascript:location.href = 'https://www.chrweb.tk';\" class=\"alert-link\">link</a>.\n" +
+                    "<strong>Make an appointment success!</strong> You should redirect automatically after 2 seconds, if not please click this <a href=\"javascript:location.href = 'http://caprivihealthcareresearch2.itdp.com.au';\" class=\"alert-link\">link</a>.\n" +
                     "</div>");
                 setTimeout(function () {
-                    window.location.href = "https://www.chrweb.tk";
+                    window.location.href = "http://caprivihealthcareresearch2.itdp.com.au";
                 }, 2000)
             }
         },
