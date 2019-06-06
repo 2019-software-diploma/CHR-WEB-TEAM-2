@@ -187,7 +187,7 @@ if (($page_type === 1 || $page_type === 6 || $page_type === 2 || $page_type === 
                                     </div>
                                     <div class="form-group">
                                         <input id="c_r_password" type="password" class="form-control"
-                                               placeholder="Conform Password" required="required">
+                                               placeholder="Confirm Password" required="required">
                                     </div>
                                     <div class="form-group">
                                         <input id="email" type="email" class="form-control" name="email"
@@ -196,7 +196,7 @@ if (($page_type === 1 || $page_type === 6 || $page_type === 2 || $page_type === 
                                     <div class="form-group">
                                         <input type="checkbox" class="custom-control-input" id="newsLetter"
                                                name="newsletter">
-                                        <label class="custom-control-label" for="newsLetter">Receive Email?</label>
+                                        <label class="custom-control-label" for="newsLetter">Receive Newsletter?</label>
                                     </div>
                                     <div class="form-group">
                                         <button id="register" type="submit"
