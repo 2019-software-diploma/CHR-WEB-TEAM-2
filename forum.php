@@ -18,7 +18,7 @@ require_once 'config/database.Connection.php';
         <div class="contact">
             <ul class="result-list">
                 <?php
-                    $SQL = "SELECT Title, Comment, Date_Posted, Member_ID FROM `forum` ORDER BY Date_Posted DEC";
+                    $SQL = "SELECT Title, Comment, Date_Posted, Member_ID FROM `forum` ORDER BY Date_Posted DESC";
                     $res = mysqli_query($mysql_con, $SQL);
                     while ($row = mysqli_fetch_row($res)){
                         $SQL = "SELECT First_Name, Last_Name FROM `client` WHERE Client_ID = '" . $row[3] . "'";
